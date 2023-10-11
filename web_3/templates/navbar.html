@@ -21,6 +21,14 @@
             <a class="nav-link" aria-current="page" href="{% url "common:login" %}">로그인</a>
             {% endif %}
           </li>
+          {% if user.is_authenticated %}
+          <li class="nav-item">
+            <form action="{% url "common:delete" %}" method="post">
+                {% csrf_token %}
+                <input type="submit" value="회원탈퇴">
+            </form>
+          </li>
+          {% endif %}
           <li class="nav-item">
             <a class="nav-link" href="https://www.youtube.com/channel/UC5CF7mLQZhvx8O5GODZAhdA" rel="nofollow"
               target="_blank">Learn Bootstrap 5</a>

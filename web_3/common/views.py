@@ -35,3 +35,9 @@ def login(request):
 def logout(request):
     auth_logout(request)
     return redirect('prediction:index')
+
+def delete(request):
+    user = request.user
+    user.delete()
+    auth_logout(request)
+    return redirect('prediction:index')
