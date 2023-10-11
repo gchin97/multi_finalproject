@@ -1,0 +1,154 @@
+{% extends "base.html" %}
+{% load prediction_filter %}
+{% block content %}
+<div class="container">
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="container">
+                <div class="col">
+                    <br>
+                    <h4 class="text-center">시도</h4>
+                    <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                        <input name="city" type="checkbox" class="btn-check" id="btncheck1" value="서울" autocomplete="off">
+                        <label for="btncheck1" class="btn btn-outline-primary"><strong>서울</strong></label>
+                        
+                        <input name="city" type="checkbox" class="btn-check" id="btncheck2" value="부산" autocomplete="off">
+                        <label for="btncheck2" class="btn btn-outline-primary"><strong>부산</strong></label>
+                        
+                        <input name="city" type="checkbox" class="btn-check" id="btncheck3" value="대구" autocomplete="off">
+                        <label for="btncheck3" class="btn btn-outline-primary"><strong>대구</strong></label>
+                        
+                        <input name="city" type="checkbox" class="btn-check" id="btncheck4" value="인천" autocomplete="off">
+                        <label for="btncheck4" class="btn btn-outline-primary"><strong>인천</strong></label>
+                        
+                        <input name="city" type="checkbox" class="btn-check" id="btncheck5" value="광주" autocomplete="off">
+                        <label for="btncheck5" class="btn btn-outline-primary"><strong>광주</strong></label>
+                        
+                        <input name="city" type="checkbox" class="btn-check" id="btncheck6" value="대전" autocomplete="off">
+                        <label for="btncheck6" class="btn btn-outline-primary"><strong>대전</strong></label>
+                        
+                        <input name="city" type="checkbox" class="btn-check" id="btncheck7" value="울산" autocomplete="off">
+                        <label for="btncheck7" class="btn btn-outline-primary"><strong>울산</strong></label>
+                        
+                        <input name="city" type="checkbox" class="btn-check" id="btncheck8" value="세종" autocomplete="off">
+                        <label for="btncheck8" class="btn btn-outline-primary"><strong>세종</strong></label>
+                        
+                        <input name="city" type="checkbox" class="btn-check" id="btncheck9" value="경기" autocomplete="off">
+                        <label for="btncheck9" class="btn btn-outline-primary"><strong>경기</strong></label>
+                        
+                        <input name="city" type="checkbox" class="btn-check" id="btncheck10" value="강원" autocomplete="off">
+                        <label for="btncheck10" class="btn btn-outline-primary"><strong>강원</strong></label>
+                        
+                        <input name="city" type="checkbox" class="btn-check" id="btncheck11" value="충북" autocomplete="off">
+                        <label for="btncheck11" class="btn btn-outline-primary"><strong>충북</strong></label>
+                        
+                        <input name="city" type="checkbox" class="btn-check" id="btncheck12" value="충남" autocomplete="off">
+                        <label for="btncheck12" class="btn btn-outline-primary"><strong>충남</strong></label>
+                        
+                        <input name="city" type="checkbox" class="btn-check" id="btncheck13" value="전북" autocomplete="off">
+                        <label for="btncheck13" class="btn btn-outline-primary"><strong>전북</strong></label>
+                        
+                        <input name="city" type="checkbox" class="btn-check" id="btncheck14" value="전남" autocomplete="off">
+                        <label for="btncheck14" class="btn btn-outline-primary"><strong>전남</strong></label>
+                        
+                        <input name="city" type="checkbox" class="btn-check" id="btncheck15" value="경북" autocomplete="off">
+                        <label for="btncheck15" class="btn btn-outline-primary"><strong>경북</strong></label>
+                        
+                        <input name="city" type="checkbox" class="btn-check" id="btncheck16" value="경남" autocomplete="off">
+                        <label for="btncheck16" class="btn btn-outline-primary"><strong>경남</strong></label>
+                        
+                        <input name="city" type="checkbox" class="btn-check" id="btncheck17" value="제주" autocomplete="off">
+                        <label for="btncheck17" class="btn btn-outline-primary"><strong>제주</strong></label>
+                    </div>
+                </div>
+                <br>
+                <div class="col">
+                    <h4 class="text-center">직업 선택</h4>
+                    <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                        <input name="job_name" type="checkbox" class="btn-check" id="btncheck01" value="데이터 분석가" autocomplete="off">
+                        <label for="btncheck01" class="btn btn-outline-primary"><strong>데이터 분석가</strong></label>
+                        
+                        <input name="job_name" type="checkbox" class="btn-check" id="btncheck02" value="데이터 엔지니어(DBA)" autocomplete="off">
+                        <label for="btncheck02" class="btn btn-outline-primary"><strong>데이터 엔지니어(DBA)</strong></label>
+                        
+                        <input name="job_name" type="checkbox" class="btn-check" id="btncheck03" value="머신러닝 엔지니어" autocomplete="off">
+                        <label for="btncheck03" class="btn btn-outline-primary"><strong>머신러닝 엔지니어</strong></label>
+                        
+                        <input name="job_name" type="checkbox" class="btn-check" id="btncheck04" value="데이터 사이언티스트" autocomplete="off">
+                        <label for="btncheck04" class="btn btn-outline-primary"><strong>데이터 사이언티스트</strong></label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary text-center">적용하기</button>
+    </form>
+</br>
+<table class="table">
+    <thead>
+        <tr class="text-center table-dark">
+            <th>번호</th>
+            <th>직업명</th>
+            <th>기업명</th>
+            <th>링크</th>
+        </tr>
+    </thead>
+    {% if emp_list %}
+    {% for emp in emp_list %}
+    <tbody>
+        <tr class="text-center">
+            <td>
+                <!-- 번호 = 전체건수 - 시작인덱스 - 현재 인덱스 + 1 -->
+                {{emp_list.paginator.count|sub:emp_list.start_index|sub:forloop.counter0|add:1}}
+            </td>
+            <td class="text-center">
+                {{emp.job_name}}
+            </td>
+            <td class="text-start">
+                {{emp.company}}
+            </td>
+            <td><a href="{{emp.link}}" target="_blank">채용공고 확인</a></td>
+        </tr>
+        {% endfor %}
+        {% endif %}
+    </tbody>
+</table>
+    <!-- 페이징처리 시작 -->
+    <ul class="pagination justify-content-center">
+        <!-- 이전 페이지 -->
+        {% if emp_list.has_previous %}
+        <li class="page-item">
+            <a href="?page={{emp_list.previous_page_number}}" class="page-link">이전</a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <a href="#" class="page-link" tabindex="-1" aria-disabled="true">이전</a>
+        </li>
+        {% endif %}
+        <!-- 페이지 리스트 -->
+        {% for page_number in emp_list.paginator.page_range %}
+        {% if page_number >= emp_list.number|add:-5 and page_number <= emp_list.number|add:+5%}
+        {% if page_number == emp_list.number %}
+        <li class="page-item active" aria-current="page">
+            <a href="?page={{page_number}}" class="page-link">{{page_number}}</a>
+        </li>
+        {% else %}
+        <li class="page-item">
+            <a href="?page={{page_number}}" class="page-link">{{page_number}}</a>
+        </li>
+        {% endif %}
+        {% endif %}
+        {% endfor %}
+        <!-- 다음 페이지 -->
+        {% if emp_list.has_next %}
+        <li class="page-item">
+            <a href="?page={{emp_list.next_page_number}}" class="page-link">다음</a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <a href="#" class="page-link" tabindex="-1" aria-disabled="true">다음</a>
+        </li>
+        {% endif %}
+    </ul>
+    <!-- 페이징처리 끝 -->
+</div>
+{% endblock content %}
