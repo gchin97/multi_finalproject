@@ -1,11 +1,14 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, update_session_auth_hash
 from django.contrib.auth import login as auth_login
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.hashers import check_password
+from django.contrib import messages, auth
+from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 from django.contrib.auth import logout as auth_logout
-from .forms import UserCreationForm
+from .forms import UserCreationForm, NormalUserChangeForm
 
 # Create your views here.
+# 회원가입
 def signup(request):
     if request.method == "POST":
         form = UserCreationForm(request.POST)
@@ -32,12 +35,41 @@ def login(request):
     context = {'form':form}
     return render(request, 'common/login.html', context)
 
+# 로그아웃
 def logout(request):
     auth_logout(request)
     return redirect('prediction:index')
 
+# 회원탈퇴
 def delete(request):
     user = request.user
     user.delete()
     auth_logout(request)
     return redirect('prediction:index')
+
+# 회원정보 수정
+def update(request):
+    if request.method == 'POST':
+        form = NormalUserChangeForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('prediction:main')
+    else:
+        form = NormalUserChangeForm(instance=request.user)
+    context = {'form':form}
+    return render(request, 'common/update.html', context)
+
+# 비밀번호 변경
+def change_password(request):
+    if request.method == "POST":
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)
+            messages.success(request, 'Password successfully changed')
+            return render(request, 'prediction/main.html')
+        else:
+            messages.error(request, 'Password not changed')
+    else:
+        form = PasswordChangeForm(request.user)
+    return render(request, 'common/changepassword.html',{'form':form})
