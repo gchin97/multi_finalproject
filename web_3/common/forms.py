@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth.forms import ReadOnlyPasswordHashField
+from django.contrib.auth.forms import ReadOnlyPasswordHashField, UserChangeForm
 from django.contrib.auth import get_user_model
 from .models import UserInfo
 
@@ -38,6 +38,14 @@ class UserChangeForm(forms.ModelForm):
 
     def clean_password(self):
         return self.initial["password"]
+
+# 일반 유저 정보 변경
+class NormalUserChangeForm(forms.ModelForm):
+    password = ReadOnlyPasswordHashField()
+    
+    class Meta:
+        model = UserInfo
+        fields = ('user_id', 'gender', 'age')
 
 # 로그인
 class LoginForm(forms.ModelForm):

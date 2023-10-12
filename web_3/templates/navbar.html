@@ -6,9 +6,9 @@
         Multi_finalproject_3조
       </a>
       <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarExample01"
-        aria-controls="navbarExample01" aria-expanded="false" aria-label="Toggle navigation">
-        <i class="fas fa-bars"></i>
-      </button>
+          aria-controls="navbarExample01" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fas fa-bars"></i>
+    </button>
       <div class="collapse navbar-collapse" id="navbarExample01">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item active">
@@ -23,10 +23,7 @@
           </li>
           {% if user.is_authenticated %}
           <li class="nav-item">
-            <form action="{% url "common:delete" %}" method="post">
-                {% csrf_token %}
-                <input type="submit" value="회원탈퇴">
-            </form>
+            <a href="{% url "common:update" %}" class="nav-link">회원정보 수정</a>
           </li>
           {% endif %}
           <li class="nav-item">
