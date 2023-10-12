@@ -3,12 +3,16 @@
 .selector {
     width: 800px;
     float: left;
+<<<<<<< HEAD
     display: flex;
+=======
+>>>>>>> origin
 }
 
 .selector select {
     width: 380px;
     height: 17.2em;
+<<<<<<< HEAD
     flex: 1 0 auto;
 }
 
@@ -18,6 +22,19 @@
     margin-bottom: 5px;
     display: flex;
     flex-direction: column;
+=======
+}
+
+.selector-available, .selector-chosen {
+    float: left;
+    width: 380px;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.selector-chosen select {
+    border-top: none;
+>>>>>>> origin
 }
 
 .selector-available h2, .selector-chosen h2 {
@@ -25,6 +42,7 @@
     border-radius: 4px 4px 0 0;
 }
 
+<<<<<<< HEAD
 .selector-chosen .list-footer-display {
     border: 1px solid var(--border-color);
     border-top: none;
@@ -40,6 +58,8 @@
     color: var(--breadcrumbs-fg);
 }
 
+=======
+>>>>>>> origin
 .selector-chosen h2 {
     background: var(--primary);
     color: var(--header-link-color);
@@ -55,7 +75,11 @@
     border-width: 0 1px;
     padding: 8px;
     color: var(--body-quiet-color);
+<<<<<<< HEAD
     font-size: 0.625rem;
+=======
+    font-size: 10px;
+>>>>>>> origin
     margin: 0;
     text-align: left;
 }
@@ -71,13 +95,18 @@
     line-height: 1;
 }
 
+<<<<<<< HEAD
 .selector .selector-available input,
 .selector .selector-chosen input {
+=======
+.selector .selector-available input {
+>>>>>>> origin
     width: 320px;
     margin-left: 8px;
 }
 
 .selector ul.selector-chooser {
+<<<<<<< HEAD
     align-self: center;
     width: 22px;
     background-color: var(--selected-bg);
@@ -85,6 +114,14 @@
     margin: 0 5px;
     padding: 0;
     transform: translateY(-17px);
+=======
+    float: left;
+    width: 22px;
+    background-color: var(--selected-bg);
+    border-radius: 10px;
+    margin: 10em 5px 0 5px;
+    padding: 0;
+>>>>>>> origin
 }
 
 .selector-chooser li {
@@ -98,6 +135,7 @@
     margin: 0 0 10px;
     border-radius: 0 0 4px 4px;
 }
+<<<<<<< HEAD
 .selector .selector-chosen--with-filtered select {
     margin: 0;
     border-radius: 0;
@@ -107,6 +145,8 @@
 .selector .selector-chosen:not(.selector-chosen--with-filtered) .list-footer-display {
     display: none;
 }
+=======
+>>>>>>> origin
 
 .selector-add, .selector-remove {
     width: 16px;
@@ -193,7 +233,10 @@ a.active.selector-clearall:focus, a.active.selector-clearall:hover {
 .stacked {
     float: left;
     width: 490px;
+<<<<<<< HEAD
     display: block;
+=======
+>>>>>>> origin
 }
 
 .stacked select {
@@ -219,7 +262,10 @@ a.active.selector-clearall:focus, a.active.selector-clearall:hover {
     margin: 0 0 10px 40%;
     background-color: #eee;
     border-radius: 10px;
+<<<<<<< HEAD
     transform: none;
+=======
+>>>>>>> origin
 }
 
 .stacked .selector-chooser li {
@@ -277,8 +323,13 @@ a.active.selector-clearall:focus, a.active.selector-clearall:hover {
 .selector .search-label-icon {
     background: url(../img/search.svg) 0 0 no-repeat;
     display: inline-block;
+<<<<<<< HEAD
     height: 1.125rem;
     width: 1.125rem;
+=======
+    height: 18px;
+    width: 18px;
+>>>>>>> origin
 }
 
 /* DATE AND TIME */
@@ -294,7 +345,11 @@ p.datetime {
 .datetime span {
     white-space: nowrap;
     font-weight: normal;
+<<<<<<< HEAD
     font-size: 0.6875rem;
+=======
+    font-size: 11px;
+>>>>>>> origin
     color: var(--body-quiet-color);
 }
 
@@ -304,7 +359,11 @@ p.datetime {
 }
 
 table p.datetime {
+<<<<<<< HEAD
     font-size: 0.6875rem;
+=======
+    font-size: 11px;
+>>>>>>> origin
     margin-left: 0;
     padding-left: 0;
 }
@@ -338,7 +397,11 @@ table p.datetime {
 }
 
 .timezonewarning {
+<<<<<<< HEAD
     font-size: 0.6875rem;
+=======
+    font-size: 11px;
+>>>>>>> origin
     color: var(--body-quiet-color);
 }
 
@@ -349,7 +412,11 @@ p.url {
     margin: 0;
     padding: 0;
     color: var(--body-quiet-color);
+<<<<<<< HEAD
     font-size: 0.6875rem;
+=======
+    font-size: 11px;
+>>>>>>> origin
     font-weight: bold;
 }
 
@@ -364,10 +431,21 @@ p.file-upload {
     margin: 0;
     padding: 0;
     color: var(--body-quiet-color);
+<<<<<<< HEAD
     font-size: 0.6875rem;
     font-weight: bold;
 }
 
+=======
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.aligned p.file-upload {
+    margin-left: 170px;
+}
+
+>>>>>>> origin
 .file-upload a {
     font-weight: normal;
 }
@@ -378,7 +456,11 @@ p.file-upload {
 
 span.clearable-file-input label {
     color: var(--body-fg);
+<<<<<<< HEAD
     font-size: 0.6875rem;
+=======
+    font-size: 11px;
+>>>>>>> origin
     display: inline;
     float: none;
 }
@@ -387,7 +469,11 @@ span.clearable-file-input label {
 
 .calendarbox, .clockbox {
     margin: 5px auto;
+<<<<<<< HEAD
     font-size: 0.75rem;
+=======
+    font-size: 12px;
+>>>>>>> origin
     width: 19em;
     text-align: center;
     background: var(--body-bg);
@@ -421,7 +507,11 @@ span.clearable-file-input label {
     text-align: center;
     border-top: none;
     font-weight: 700;
+<<<<<<< HEAD
     font-size: 0.75rem;
+=======
+    font-size: 12px;
+>>>>>>> origin
     color: #333;
     background: var(--accent);
 }
@@ -431,14 +521,22 @@ span.clearable-file-input label {
     background: var(--darkened-bg);
     border-bottom: 1px solid var(--border-color);
     font-weight: 400;
+<<<<<<< HEAD
     font-size: 0.75rem;
+=======
+    font-size: 12px;
+>>>>>>> origin
     text-align: center;
     color: var(--body-quiet-color);
 }
 
 .calendar td {
     font-weight: 400;
+<<<<<<< HEAD
     font-size: 0.75rem;
+=======
+    font-size: 12px;
+>>>>>>> origin
     text-align: center;
     padding: 0;
     border-top: 1px solid var(--hairline-color);
@@ -478,7 +576,11 @@ span.clearable-file-input label {
 }
 
 .calendarnav {
+<<<<<<< HEAD
     font-size: 0.625rem;
+=======
+    font-size: 10px;
+>>>>>>> origin
     text-align: center;
     color: #ccc;
     margin: 0;
@@ -493,8 +595,13 @@ span.clearable-file-input label {
 .calendar-shortcuts {
     background: var(--body-bg);
     color: var(--body-quiet-color);
+<<<<<<< HEAD
     font-size: 0.6875rem;
     line-height: 0.6875rem;
+=======
+    font-size: 11px;
+    line-height: 11px;
+>>>>>>> origin
     border-top: 1px solid var(--hairline-color);
     padding: 8px 0;
 }
@@ -532,7 +639,11 @@ span.clearable-file-input label {
 .calendar-cancel {
     margin: 0;
     padding: 4px 0;
+<<<<<<< HEAD
     font-size: 0.75rem;
+=======
+    font-size: 12px;
+>>>>>>> origin
     background: #eee;
     border-top: 1px solid var(--border-color);
     color: var(--body-fg);
@@ -595,9 +706,12 @@ select + .related-widget-wrapper-link,
 .related-widget-wrapper-link + .related-widget-wrapper-link {
     margin-left: 7px;
 }
+<<<<<<< HEAD
 
 /* GIS MAPS */
 .dj_map {
     width: 600px;
     height: 400px;
 }
+=======
+>>>>>>> origin

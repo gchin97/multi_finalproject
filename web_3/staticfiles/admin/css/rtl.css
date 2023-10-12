@@ -111,11 +111,27 @@ thead th.sorted .text {
 
 .aligned label {
     padding: 0 0 3px 1em;
+<<<<<<< HEAD
 }
 
 .submit-row a.deletelink {
     margin-left: 0;
     margin-right: auto;
+=======
+    float: right;
+}
+
+.submit-row {
+    text-align: left
+}
+
+.submit-row p.deletelink-box {
+    float: right;
+}
+
+.submit-row input.default {
+    margin-left: 0;
+>>>>>>> origin
 }
 
 .vDateField, .vTimeField {
@@ -126,11 +142,21 @@ thead th.sorted .text {
     margin-left: 5px;
 }
 
+<<<<<<< HEAD
 form .aligned ul {
     margin-right: 163px;
     padding-right: 10px;
     margin-left: 0;
     padding-left: 0;
+=======
+form .aligned p.help, form .aligned div.help {
+    clear: right;
+}
+
+form .aligned ul {
+    margin-right: 163px;
+    margin-left: 0;
+>>>>>>> origin
 }
 
 form ul.inline li {
@@ -139,6 +165,7 @@ form ul.inline li {
     padding-left: 7px;
 }
 
+<<<<<<< HEAD
 form .aligned p.help,
 form .aligned div.help {
     margin-right: 160px;
@@ -172,6 +199,14 @@ form .wide input + div.help {
 }
 
 fieldset .fieldBox {
+=======
+input[type=submit].default, .submit-row input.default {
+    float: left;
+}
+
+fieldset .fieldBox {
+    float: right;
+>>>>>>> origin
     margin-left: 20px;
     margin-right: 0;
 }
@@ -192,24 +227,30 @@ fieldset .fieldBox {
     top: 0;
     left: auto;
     right: 10px;
+<<<<<<< HEAD
     background: url(../img/calendar-icons.svg) 0 -30px no-repeat;
 }
 
 .calendarbox .calendarnav-previous:focus,
 .calendarbox .calendarnav-previous:hover {
     background-position: 0 -45px;
+=======
+>>>>>>> origin
 }
 
 .calendarnav-next {
     top: 0;
     right: auto;
     left: 10px;
+<<<<<<< HEAD
     background: url(../img/calendar-icons.svg) 0 0 no-repeat;
 }
 
 .calendarbox .calendarnav-next:focus,
 .calendarbox .calendarnav-next:hover {
     background-position: 0 -15px;
+=======
+>>>>>>> origin
 }
 
 .calendar caption, .calendarbox h2 {
@@ -224,6 +265,7 @@ fieldset .fieldBox {
     text-align: right;
 }
 
+<<<<<<< HEAD
 .selector-add {
   background: url(../img/selector-icons.svg) 0 -64px no-repeat;
 }
@@ -256,6 +298,8 @@ a.active.selector-clearall:focus, a.active.selector-clearall:hover {
     background-position: 0 -176px;
 }
 
+=======
+>>>>>>> origin
 .inline-deletelink {
     float: left;
 }

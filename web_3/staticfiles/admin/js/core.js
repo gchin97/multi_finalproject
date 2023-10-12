@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 // Core JavaScript helper functions
+=======
+// Core javascript helper functions
+>>>>>>> origin
 'use strict';
 
 // quickElement(tagType, parentReference [, textInChildNode, attribute, attributeValue ...]);
@@ -119,11 +123,19 @@ function findPosY(obj) {
         let result = '', i = 0;
         while (i < format.length) {
             if (format.charAt(i) === '%') {
+<<<<<<< HEAD
                 result += fields[format.charAt(i + 1)];
                 ++i;
             }
             else {
                 result += format.charAt(i);
+=======
+                result = result + fields[format.charAt(i + 1)];
+                ++i;
+            }
+            else {
+                result = result + format.charAt(i);
+>>>>>>> origin
             }
             ++i;
         }

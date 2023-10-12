@@ -2,6 +2,7 @@
     DJANGO Admin styles
 */
 
+<<<<<<< HEAD
 /* VARIABLE DEFINITIONS */
 html[data-theme="light"],
 :root {
@@ -86,6 +87,95 @@ html[data-theme="light"],
         "Segoe UI Emoji",
         "Segoe UI Symbol",
         "Noto Color Emoji";
+=======
+@import url(fonts.css);
+
+/* VARIABLE DEFINITIONS */
+:root {
+  --primary: #79aec8;
+  --secondary: #417690;
+  --accent: #f5dd5d;
+  --primary-fg: #fff;
+
+  --body-fg: #333;
+  --body-bg: #fff;
+  --body-quiet-color: #666;
+  --body-loud-color: #000;
+
+  --header-color: #ffc;
+  --header-branding-color: var(--accent);
+  --header-bg: var(--secondary);
+  --header-link-color: var(--primary-fg);
+
+  --breadcrumbs-fg: #c4dce8;
+  --breadcrumbs-link-fg: var(--body-bg);
+  --breadcrumbs-bg: var(--primary);
+
+  --link-fg: #447e9b;
+  --link-hover-color: #036;
+  --link-selected-fg: #5b80b2;
+
+  --hairline-color: #e8e8e8;
+  --border-color: #ccc;
+
+  --error-fg: #ba2121;
+
+  --message-success-bg: #dfd;
+  --message-warning-bg: #ffc;
+  --message-error-bg: #ffefef;
+
+  --darkened-bg: #f8f8f8; /* A bit darker than --body-bg */
+  --selected-bg: #e4e4e4; /* E.g. selected table cells */
+  --selected-row: #ffc;
+
+  --button-fg: #fff;
+  --button-bg: var(--primary);
+  --button-hover-bg: #609ab6;
+  --default-button-bg: var(--secondary);
+  --default-button-hover-bg: #205067;
+  --close-button-bg: #888; /* Previously #bbb, contrast 1.92 */
+  --close-button-hover-bg: #747474;
+  --delete-button-bg: #ba2121;
+  --delete-button-hover-bg: #a41515;
+
+  --object-tools-fg: var(--button-fg);
+  --object-tools-bg: var(--close-button-bg);
+  --object-tools-hover-bg: var(--close-button-hover-bg);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary: #264b5d;
+    --primary-fg: #eee;
+
+    --body-fg: #eeeeee;
+    --body-bg: #121212;
+    --body-quiet-color: #e0e0e0;
+    --body-loud-color: #ffffff;
+
+    --breadcrumbs-link-fg: #e0e0e0;
+    --breadcrumbs-bg: var(--primary);
+
+    --link-fg: #81d4fa;
+    --link-hover-color: #4ac1f7;
+    --link-selected-fg: #6f94c6;
+
+    --hairline-color: #272727;
+    --border-color: #353535;
+
+    --error-fg: #e35f5f;
+    --message-success-bg: #006b1b;
+    --message-warning-bg: #583305;
+    --message-error-bg: #570808;
+
+    --darkened-bg: #212121;
+    --selected-bg: #1b1b1b;
+    --selected-row: #00363a;
+
+    --close-button-bg: #333333;
+    --close-button-hover-bg: #666666;
+  }
+>>>>>>> origin
 }
 
 html, body {
@@ -95,8 +185,13 @@ html, body {
 body {
     margin: 0;
     padding: 0;
+<<<<<<< HEAD
     font-size: 0.875rem;
     font-family: var(--font-family-primary);
+=======
+    font-size: 14px;
+    font-family: "Roboto","Lucida Grande","DejaVu Sans","Bitstream Vera Sans",Verdana,Arial,sans-serif;
+>>>>>>> origin
     color: var(--body-fg);
     background: var(--body-bg);
 }
@@ -148,12 +243,20 @@ h1,h2,h3,h4,h5 {
 h1 {
     margin: 0 0 20px;
     font-weight: 300;
+<<<<<<< HEAD
     font-size: 1.25rem;
+=======
+    font-size: 20px;
+>>>>>>> origin
     color: var(--body-quiet-color);
 }
 
 h2 {
+<<<<<<< HEAD
     font-size: 1rem;
+=======
+    font-size: 16px;
+>>>>>>> origin
     margin: 1em 0 .5em 0;
 }
 
@@ -163,20 +266,32 @@ h2.subhead {
 }
 
 h3 {
+<<<<<<< HEAD
     font-size: 0.875rem;
+=======
+    font-size: 14px;
+>>>>>>> origin
     margin: .8em 0 .3em 0;
     color: var(--body-quiet-color);
     font-weight: bold;
 }
 
 h4 {
+<<<<<<< HEAD
     font-size: 0.75rem;
+=======
+    font-size: 12px;
+>>>>>>> origin
     margin: 1em 0 .8em 0;
     padding-bottom: 3px;
 }
 
 h5 {
+<<<<<<< HEAD
     font-size: 0.625rem;
+=======
+    font-size: 10px;
+>>>>>>> origin
     margin: 1.5em 0 .5em 0;
     color: var(--body-quiet-color);
     text-transform: uppercase;
@@ -193,8 +308,13 @@ li ul {
 }
 
 li, dt, dd {
+<<<<<<< HEAD
     font-size: 0.8125rem;
     line-height: 1.25rem;
+=======
+    font-size: 13px;
+    line-height: 20px;
+>>>>>>> origin
 }
 
 dt {
@@ -220,7 +340,11 @@ fieldset {
 }
 
 blockquote {
+<<<<<<< HEAD
     font-size: 0.6875rem;
+=======
+    font-size: 11px;
+>>>>>>> origin
     color: #777;
     margin-left: 2px;
     padding-left: 10px;
@@ -228,9 +352,15 @@ blockquote {
 }
 
 code, pre {
+<<<<<<< HEAD
     font-family: var(--font-family-monospace);
     color: var(--body-quiet-color);
     font-size: 0.75rem;
+=======
+    font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
+    color: var(--body-quiet-color);
+    font-size: 12px;
+>>>>>>> origin
     overflow-x: auto;
 }
 
@@ -252,12 +382,17 @@ hr {
     border: none;
     margin: 0;
     padding: 0;
+<<<<<<< HEAD
+=======
+    font-size: 1px;
+>>>>>>> origin
     line-height: 1px;
 }
 
 /* TEXT STYLES & MODIFIERS */
 
 .small {
+<<<<<<< HEAD
     font-size: 0.6875rem;
 }
 
@@ -267,6 +402,17 @@ hr {
 
 .help, p.help, form p.help, div.help, form div.help, div.help li {
     font-size: 0.6875rem;
+=======
+    font-size: 11px;
+}
+
+.mini {
+    font-size: 10px;
+}
+
+.help, p.help, form p.help, div.help, form div.help, div.help li {
+    font-size: 11px;
+>>>>>>> origin
     color: var(--body-quiet-color);
 }
 
@@ -296,7 +442,11 @@ p img, h1 img, h2 img, h3 img, h4 img, td img {
 }
 
 .hidden {
+<<<<<<< HEAD
     display: none !important;
+=======
+    display: none;
+>>>>>>> origin
 }
 
 /* TABLES */
@@ -307,8 +457,13 @@ table {
 }
 
 td, th {
+<<<<<<< HEAD
     font-size: 0.8125rem;
     line-height: 1rem;
+=======
+    font-size: 13px;
+    line-height: 16px;
+>>>>>>> origin
     border-bottom: 1px solid var(--hairline-color);
     vertical-align: top;
     padding: 8px;
@@ -323,7 +478,11 @@ thead th,
 tfoot td {
     color: var(--body-quiet-color);
     padding: 5px 10px;
+<<<<<<< HEAD
     font-size: 0.6875rem;
+=======
+    font-size: 11px;
+>>>>>>> origin
     background: var(--body-bg);
     border: none;
     border-top: 1px solid var(--hairline-color);
@@ -433,7 +592,11 @@ table thead th.sorted .sortoptions a.sortremove:after {
     top: -6px;
     left: 3px;
     font-weight: 200;
+<<<<<<< HEAD
     font-size: 1.125rem;
+=======
+    font-size: 18px;
+>>>>>>> origin
     color: var(--body-quiet-color);
 }
 
@@ -472,9 +635,15 @@ input, textarea, select, .form-row p, form .button {
     margin: 2px 0;
     padding: 2px 3px;
     vertical-align: middle;
+<<<<<<< HEAD
     font-family: var(--font-family-primary);
     font-weight: normal;
     font-size: 0.8125rem;
+=======
+    font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
+    font-weight: normal;
+    font-size: 13px;
+>>>>>>> origin
 }
 .form-row div.help {
     padding: 2px 3px;
@@ -501,7 +670,11 @@ textarea:focus, select:focus, .vTextField:focus {
 }
 
 select {
+<<<<<<< HEAD
     height: 1.875rem;
+=======
+    height: 30px;
+>>>>>>> origin
 }
 
 select[multiple] {
@@ -537,6 +710,10 @@ a.button {
 }
 
 .button.default, input[type=submit].default, .submit-row input.default {
+<<<<<<< HEAD
+=======
+    float: right;
+>>>>>>> origin
     border: none;
     font-weight: 400;
     background: var(--default-button-bg);
@@ -584,7 +761,11 @@ input[type=button][disabled].default {
     margin: 0;
     padding: 8px;
     font-weight: 400;
+<<<<<<< HEAD
     font-size: 0.8125rem;
+=======
+    font-size: 13px;
+>>>>>>> origin
     text-align: left;
     background: var(--primary);
     color: var(--header-link-color);
@@ -592,7 +773,11 @@ input[type=button][disabled].default {
 
 .module caption,
 .inline-group h2 {
+<<<<<<< HEAD
     font-size: 0.75rem;
+=======
+    font-size: 12px;
+>>>>>>> origin
     letter-spacing: 0.5px;
     text-transform: uppercase;
 }
@@ -611,13 +796,20 @@ ul.messagelist {
 ul.messagelist li {
     display: block;
     font-weight: 400;
+<<<<<<< HEAD
     font-size: 0.8125rem;
+=======
+    font-size: 13px;
+>>>>>>> origin
     padding: 10px 10px 10px 65px;
     margin: 0 0 10px 0;
     background: var(--message-success-bg) url(../img/icon-yes.svg) 40px 12px no-repeat;
     background-size: 16px auto;
     color: var(--body-fg);
+<<<<<<< HEAD
     word-break: break-word;
+=======
+>>>>>>> origin
 }
 
 ul.messagelist li.warning {
@@ -631,7 +823,11 @@ ul.messagelist li.error {
 }
 
 .errornote {
+<<<<<<< HEAD
     font-size: 0.875rem;
+=======
+    font-size: 14px;
+>>>>>>> origin
     font-weight: 700;
     display: block;
     padding: 10px 12px;
@@ -652,7 +848,11 @@ ul.errorlist {
 }
 
 ul.errorlist li {
+<<<<<<< HEAD
     font-size: 0.8125rem;
+=======
+    font-size: 13px;
+>>>>>>> origin
     display: block;
     margin-bottom: 4px;
     overflow-wrap: break-word;
@@ -693,7 +893,11 @@ td ul.errorlist + input, td ul.errorlist + select, td ul.errorlist + textarea {
 }
 
 .description {
+<<<<<<< HEAD
     font-size: 0.75rem;
+=======
+    font-size: 12px;
+>>>>>>> origin
     padding: 5px 0 0 12px;
 }
 
@@ -749,7 +953,11 @@ a.deletelink:focus, a.deletelink:hover {
 /* OBJECT TOOLS */
 
 .object-tools {
+<<<<<<< HEAD
     font-size: 0.625rem;
+=======
+    font-size: 10px;
+>>>>>>> origin
     font-weight: bold;
     padding-left: 0;
     float: right;
@@ -761,7 +969,11 @@ a.deletelink:focus, a.deletelink:hover {
     display: block;
     float: left;
     margin-left: 5px;
+<<<<<<< HEAD
     height: 1rem;
+=======
+    height: 16px;
+>>>>>>> origin
 }
 
 .object-tools a {
@@ -775,7 +987,11 @@ a.deletelink:focus, a.deletelink:hover {
     background: var(--object-tools-bg);
     color: var(--object-tools-fg);
     font-weight: 400;
+<<<<<<< HEAD
     font-size: 0.6875rem;
+=======
+    font-size: 11px;
+>>>>>>> origin
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
@@ -804,6 +1020,7 @@ a.deletelink:focus, a.deletelink:hover {
 
 /* OBJECT HISTORY */
 
+<<<<<<< HEAD
 #change-history table {
     width: 100%;
 }
@@ -819,6 +1036,16 @@ a.deletelink:focus, a.deletelink:hover {
     overflow: hidden;
 }
 
+=======
+table#change-history {
+    width: 100%;
+}
+
+table#change-history tbody th {
+    width: 16em;
+}
+
+>>>>>>> origin
 /* PAGE STRUCTURE */
 
 #container {
@@ -845,6 +1072,7 @@ a.deletelink:focus, a.deletelink:hover {
     max-width: 100%;
 }
 
+<<<<<<< HEAD
 .skip-to-content-link {
     position: absolute;
     top: -999px;
@@ -859,6 +1087,8 @@ a.deletelink:focus, a.deletelink:hover {
     top: 0px;
 }
 
+=======
+>>>>>>> origin
 #content {
     padding: 20px 40px;
 }
@@ -922,7 +1152,11 @@ a.deletelink:focus, a.deletelink:hover {
     overflow: hidden;
 }
 
+<<<<<<< HEAD
 #header a:link, #header a:visited, #logout-form button {
+=======
+#header a:link, #header a:visited {
+>>>>>>> origin
     color: var(--header-link-color);
 }
 
@@ -931,11 +1165,16 @@ a.deletelink:focus, a.deletelink:hover {
 }
 
 #branding {
+<<<<<<< HEAD
     display: flex;
+=======
+    float: left;
+>>>>>>> origin
 }
 
 #branding h1 {
     padding: 0;
+<<<<<<< HEAD
     margin: 0;
     margin-inline-end: 20px;
     font-weight: 300;
@@ -944,12 +1183,25 @@ a.deletelink:focus, a.deletelink:hover {
 }
 
 #branding h1 a:link, #branding h1 a:visited {
+=======
+    margin: 0 20px 0 0;
+    font-weight: 300;
+    font-size: 24px;
+    color: var(--accent);
+}
+
+#branding h1, #branding h1 a:link, #branding h1 a:visited {
+>>>>>>> origin
     color: var(--accent);
 }
 
 #branding h2 {
     padding: 0 10px;
+<<<<<<< HEAD
     font-size: 0.875rem;
+=======
+    font-size: 14px;
+>>>>>>> origin
     margin: -8px 0 8px 0;
     font-weight: normal;
     color: var(--header-color);
@@ -959,6 +1211,7 @@ a.deletelink:focus, a.deletelink:hover {
     text-decoration: none;
 }
 
+<<<<<<< HEAD
 #logout-form {
     display: inline;
 }
@@ -996,6 +1249,27 @@ a.deletelink:focus, a.deletelink:hover {
 
 #logout-form button:active, #logout-form button:hover {
     margin-bottom: 1px;
+=======
+#user-tools {
+    float: right;
+    padding: 0;
+    margin: 0 0 0 20px;
+    font-weight: 300;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    text-align: right;
+}
+
+#user-tools a {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+#user-tools a:focus, #user-tools a:hover {
+    text-decoration: none;
+    border-bottom-color: var(--primary);
+    color: var(--primary);
+>>>>>>> origin
 }
 
 /* SIDEBAR */
@@ -1015,7 +1289,11 @@ a.deletelink:focus, a.deletelink:hover {
 }
 
 #content-related h4 {
+<<<<<<< HEAD
     font-size: 0.8125rem;
+=======
+    font-size: 13px;
+>>>>>>> origin
 }
 
 #content-related p {
@@ -1039,7 +1317,11 @@ a.deletelink:focus, a.deletelink:hover {
     padding: 16px;
     margin-bottom: 16px;
     border-bottom: 1px solid var(--hairline-color);
+<<<<<<< HEAD
     font-size: 1.125rem;
+=======
+    font-size: 18px;
+>>>>>>> origin
     color: var(--body-fg);
 }
 
@@ -1059,8 +1341,13 @@ a.deletelink:focus, a.deletelink:hover {
 .delete-confirmation form .cancel-link {
     display: inline-block;
     vertical-align: middle;
+<<<<<<< HEAD
     height: 0.9375rem;
     line-height: 0.9375rem;
+=======
+    height: 15px;
+    line-height: 15px;
+>>>>>>> origin
     border-radius: 4px;
     padding: 10px 15px;
     color: var(--button-fg);
@@ -1086,6 +1373,7 @@ a.deletelink:focus, a.deletelink:hover {
 .popup #header {
     padding: 10px 20px;
 }
+<<<<<<< HEAD
 
 /* PAGINATOR */
 
@@ -1136,3 +1424,5 @@ a.deletelink:focus, a.deletelink:hover {
 .base-svgs {
     display: none;
 }
+=======
+>>>>>>> origin

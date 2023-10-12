@@ -4,6 +4,7 @@
 'use strict';
 {
     const $ = django.jQuery;
+<<<<<<< HEAD
     let popupIndex = 0;
     const relatedWindows = [];
 
@@ -35,12 +36,20 @@
 
     function showAdminPopup(triggeringLink, name_regexp, add_popup) {
         const name = addPopupIndex(triggeringLink.id.replace(name_regexp, ''));
+=======
+
+    function showAdminPopup(triggeringLink, name_regexp, add_popup) {
+        const name = triggeringLink.id.replace(name_regexp, '');
+>>>>>>> origin
         const href = new URL(triggeringLink.href);
         if (add_popup) {
             href.searchParams.set('_popup', 1);
         }
         const win = window.open(href, name, 'height=500,width=800,resizable=yes,scrollbars=yes');
+<<<<<<< HEAD
         relatedWindows.push(win);
+=======
+>>>>>>> origin
         win.focus();
         return false;
     }
@@ -50,17 +59,24 @@
     }
 
     function dismissRelatedLookupPopup(win, chosenId) {
+<<<<<<< HEAD
         const name = removePopupIndex(win.name);
+=======
+        const name = win.name;
+>>>>>>> origin
         const elem = document.getElementById(name);
         if (elem.classList.contains('vManyToManyRawIdAdminField') && elem.value) {
             elem.value += ',' + chosenId;
         } else {
             document.getElementById(name).value = chosenId;
         }
+<<<<<<< HEAD
         const index = relatedWindows.indexOf(win);
         if (index > -1) {
             relatedWindows.splice(index, 1);
         }
+=======
+>>>>>>> origin
         win.close();
     }
 
@@ -85,6 +101,7 @@
         }
     }
 
+<<<<<<< HEAD
     function updateRelatedSelectsOptions(currentSelect, win, objId, newRepr, newId) {
         // After create/edit a model from the options next to the current
         // select (+ or :pencil:) update ForeignKey PK of the rest of selects
@@ -117,12 +134,19 @@
 
     function dismissAddRelatedObjectPopup(win, newId, newRepr) {
         const name = removePopupIndex(win.name);
+=======
+    function dismissAddRelatedObjectPopup(win, newId, newRepr) {
+        const name = win.name;
+>>>>>>> origin
         const elem = document.getElementById(name);
         if (elem) {
             const elemName = elem.nodeName.toUpperCase();
             if (elemName === 'SELECT') {
                 elem.options[elem.options.length] = new Option(newRepr, newId, true, true);
+<<<<<<< HEAD
                 updateRelatedSelectsOptions(elem, win, null, newRepr, newId);
+=======
+>>>>>>> origin
             } else if (elemName === 'INPUT') {
                 if (elem.classList.contains('vManyToManyRawIdAdminField') && elem.value) {
                     elem.value += ',' + newId;
@@ -138,15 +162,22 @@
             SelectBox.add_to_cache(toId, o);
             SelectBox.redisplay(toId);
         }
+<<<<<<< HEAD
         const index = relatedWindows.indexOf(win);
         if (index > -1) {
             relatedWindows.splice(index, 1);
         }
+=======
+>>>>>>> origin
         win.close();
     }
 
     function dismissChangeRelatedObjectPopup(win, objId, newRepr, newId) {
+<<<<<<< HEAD
         const id = removePopupIndex(win.name.replace(/^edit_/, ''));
+=======
+        const id = win.name.replace(/^edit_/, '');
+>>>>>>> origin
         const selectsSelector = interpolate('#%s, #%s_from, #%s_to', [id, id, id]);
         const selects = $(selectsSelector);
         selects.find('option').each(function() {
@@ -154,23 +185,34 @@
                 this.textContent = newRepr;
                 this.value = newId;
             }
+<<<<<<< HEAD
         }).trigger('change');
         updateRelatedSelectsOptions(selects[0], win, objId, newRepr, newId);
+=======
+        });
+>>>>>>> origin
         selects.next().find('.select2-selection__rendered').each(function() {
             // The element can have a clear button as a child.
             // Use the lastChild to modify only the displayed value.
             this.lastChild.textContent = newRepr;
             this.title = newRepr;
         });
+<<<<<<< HEAD
         const index = relatedWindows.indexOf(win);
         if (index > -1) {
             relatedWindows.splice(index, 1);
         }
+=======
+>>>>>>> origin
         win.close();
     }
 
     function dismissDeleteRelatedObjectPopup(win, objId) {
+<<<<<<< HEAD
         const id = removePopupIndex(win.name.replace(/^delete_/, ''));
+=======
+        const id = win.name.replace(/^delete_/, '');
+>>>>>>> origin
         const selectsSelector = interpolate('#%s, #%s_from, #%s_to', [id, id, id]);
         const selects = $(selectsSelector);
         selects.find('option').each(function() {
@@ -178,10 +220,13 @@
                 $(this).remove();
             }
         }).trigger('change');
+<<<<<<< HEAD
         const index = relatedWindows.indexOf(win);
         if (index > -1) {
             relatedWindows.splice(index, 1);
         }
+=======
+>>>>>>> origin
         win.close();
     }
 
@@ -192,23 +237,34 @@
     window.dismissAddRelatedObjectPopup = dismissAddRelatedObjectPopup;
     window.dismissChangeRelatedObjectPopup = dismissChangeRelatedObjectPopup;
     window.dismissDeleteRelatedObjectPopup = dismissDeleteRelatedObjectPopup;
+<<<<<<< HEAD
     window.dismissChildPopups = dismissChildPopups;
+=======
+>>>>>>> origin
 
     // Kept for backward compatibility
     window.showAddAnotherPopup = showRelatedObjectPopup;
     window.dismissAddAnotherPopup = dismissAddRelatedObjectPopup;
 
+<<<<<<< HEAD
     window.addEventListener('unload', function(evt) {
         window.dismissChildPopups();
     });
 
     $(document).ready(function() {
         setPopupIndex();
+=======
+    $(document).ready(function() {
+>>>>>>> origin
         $("a[data-popup-opener]").on('click', function(event) {
             event.preventDefault();
             opener.dismissRelatedLookupPopup(window, $(this).data("popup-opener"));
         });
+<<<<<<< HEAD
         $('body').on('click', '.related-widget-wrapper-link[data-popup="yes"]', function(e) {
+=======
+        $('body').on('click', '.related-widget-wrapper-link', function(e) {
+>>>>>>> origin
             e.preventDefault();
             if (this.href) {
                 const event = $.Event('django:show-related', {href: this.href});
