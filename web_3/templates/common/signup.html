@@ -1,3 +1,59 @@
+{% load static %}
+<link rel="stylesheet" href="{% static "login.css" %}" />
+<link href="/pathToStyle/nice-select.css" rel="stylesheet">
+<div class="login-box">
+  <h2>Sign Up</h2>
+  <form action="{% url "common:signup" %}" method="post">
+    {% csrf_token %}
+    {% include "form_errors.html" %}
+      <div class="user-box">
+        <input type="text" name="user_id" id="user_id" required="" class="form-control"
+                  value="{{form.user_id.value|default_if_none:""}}">
+        <label>Username(e-mail)</label>
+      </div>
+
+      <div class="user-box">
+        <input type="password" name="password1" id="password1" required="" class="form-control"
+                  value="{{form.password1.value|default_if_none:""}}">
+        <label>Password</label>
+      </div>
+
+      <div class="user-box">
+        <input type="password" name="password2" id="password2" required="" class="form-control"
+                  value="{{form.password2.value|default_if_none:""}}">
+        <label>Password Confirm</label>
+      </div>   
+
+      <div class="user-box">
+          <input type="text" name="age" id="age" required="" class="form-control"
+              value="{{form.age.value|default_if_none:""}}">
+          <label for="age">Age</label>
+      </div>
+
+      <div class="mb-3">
+        <label for="gender">Gender</label>
+            <select name="gender" id="gender" class="form-control">
+                <option value="">Select Gender</option>
+                <option value="1">남성</option>
+                <option value="2">여성</option>
+            </select>
+      </div>  
+      <br>
+
+
+      <button type="submit" class="btn btn-primary"><span>Creat Account</span></button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
+
+<script>
+$(document).ready(function(){
+
+    // selectbox styling
+    $('select').niceSelect();
+
+});
+</script>
+</div> 
+{% comment %} 
 {% extends "base.html" %}
 {% block content %}
 <br>
@@ -37,4 +93,4 @@
         <button type="submit" class="btn btn-primary">생성하기</button>
     </form>
 </div>
-{% endblock content %}
+{% endblock content %} {% endcomment %}
