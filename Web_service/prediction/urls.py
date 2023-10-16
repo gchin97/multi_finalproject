@@ -8,4 +8,5 @@ urlpatterns = [
     path('main/', views.main, name='main'),
     path('predict/', views.predict, name='predict'),
     path('emp/', views.emp, name='emp'),
+    path('search/', views.search, name='search'),
 ]

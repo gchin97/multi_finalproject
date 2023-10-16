@@ -27,12 +27,50 @@ def predict(request):
     return render(request, 'prediction/predict.html', context)
 
 def emp(request):
+    city_list = EmpInfo.objects.values_list('city', flat=True).distinct()
+    job_list = EmpInfo.objects.values_list('job_name', flat=True).distinct()
+
     if request.method == 'POST':
-        return render(request, 'prediction/emp.html')
-    else:
-        page = request.GET.get('page', '1')
-        emp_list = EmpInfo.objects.distinct()
+        # 필터링을 적용한 경우
+        selected_cities = request.POST.getlist("city")
+        selected_jobs = request.POST.getlist("job_name")
+
+        emp_list = EmpInfo.objects.all()
+
+        if selected_cities:
+            emp_list = emp_list.filter(city__in=selected_cities)
+        if selected_jobs:
+            emp_list = emp_list.filter(job_name__in=selected_jobs)
+
         paginator = Paginator(emp_list, 10)
+        page = request.GET.get('page', '1')
         page_obj = paginator.get_page(page)
-        context = {'emp_list':page_obj} # 오류 발생으로 emp_info foreign key 삭제(직업명)
-        return render(request, 'prediction/emp.html', context=context)
+    else:
+        # 초기 페이지 로드
+        emp_list = EmpInfo.objects.all()
+        paginator = Paginator(emp_list, 10)
+        page = request.GET.get('page', '1')
+        page_obj = paginator.get_page(page)
+
+    context = {'emp_list': page_obj, 'city_list': city_list, 'job_list': job_list}
+    return render(request, 'prediction/emp.html', context)
+
+def search(request):
+    city_list = EmpInfo.objects.values_list('city', flat=True).distinct()
+    job_list = EmpInfo.objects.values_list('job_name', flat=True).distinct()
+
+    if request.user.is_authenticated:
+        if request.method == 'GET':
+            selected_cities = request.GET.getlist("city")
+            selected_jobs = request.GET.getlist("job_name")
+
+            emp_list = EmpInfo.objects.all()
+
+            if selected_cities:
+                emp_list = emp_list.filter(city__in=selected_cities)
+            if selected_jobs:
+                emp_list = emp_list.filter(job_name__in=selected_jobs)
+
+            return render(request, 'prediction/emp.html', {'city_list': city_list, 'job_list': job_list, 'emp_list': emp_list})
+    else:
+        return render(request, 'common/login.html')
