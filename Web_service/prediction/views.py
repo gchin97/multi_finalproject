@@ -9,7 +9,9 @@ def index(request):
     return render(request, 'prediction/index.html')
 
 def main(request):
-    return render(request, 'prediction/main.html')
+    user_id = request.user.user_id
+    username = user_id.split('@')[0] # 메인페이지 이메일 형식 슬라이싱 추가
+    return render(request, 'prediction/main.html', {'username': username}) # username을 호출하는 경우 슬라이싱 된 아이디만 반환
 
 def predict(request):
     if request.method == 'POST':
@@ -39,13 +41,16 @@ def emp(request):
             emp_list = emp_list.filter(city__in=selected_cities)
         if selected_jobs:
             emp_list = emp_list.filter(job_name__in=selected_jobs)
+
+        paginator = Paginator(emp_list, 10)
+        page = request.GET.get('page', '1')
+        page_obj = paginator.get_page(page)
     else:
         # 초기 페이지 로드
         emp_list = EmpInfo.objects.all()
-
-    paginator = Paginator(emp_list, 10)
-    page = request.GET.get('page', '1')
-    page_obj = paginator.get_page(page)
+        paginator = Paginator(emp_list, 10)
+        page = request.GET.get('page', '1')
+        page_obj = paginator.get_page(page)
 
     context = {'emp_list': page_obj, 'city_list': city_list, 'job_list': job_list}
     return render(request, 'prediction/emp.html', context)
