@@ -9,7 +9,9 @@ def index(request):
     return render(request, 'prediction/index.html')
 
 def main(request):
-    return render(request, 'prediction/main.html')
+    user_id = request.user.user_id
+    username = user_id.split('@')[0] # 메인페이지 이메일 형식 슬라이싱 추가
+    return render(request, 'prediction/main.html', {'username': username}) # username을 호출하는 경우 슬라이싱 된 아이디만 반환
 
 def predict(request):
     if request.method == 'POST':

@@ -5,13 +5,17 @@
     <div class="container">
       <!--Section: Content-->
       <section class="text-center">
-        <h4 class="mb-5"><strong>...</strong></h4>
+        {% if user.is_authenticated %}
+        <h4 class="mb-5"><strong>{{ username }} 님 환영합니다.</strong></h4>
+        {% else %}
+        <h4 class="mb-5"><strong>로그인이 필요합니다.</strong></h4>
+        {% endif %}
 
         <div class="row">
           <div class="col-lg-6 mb-4">
             <div class="card">
               <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                <img src="https://mdbootstrap.com/img/new/standard/nature/184.jpg" class="img-fluid" />
+                <img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*-20H8OPvi_Mcg5zqaGLZZA.png" class="img-fluid" />
                 <a href="#!">
                   <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                 </a>
@@ -30,7 +34,7 @@
           <div class="col-lg-6 mb-4">
             <div class="card">
               <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                <img src="https://mdbootstrap.com/img/new/standard/nature/023.jpg" class="img-fluid" />
+                <img src="https://www.isms.et/img/page-pics/landing02.svg" class="img-fluid" />
                 <a href="#!">
                   <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                 </a>
