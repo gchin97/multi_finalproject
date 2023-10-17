@@ -36,3 +36,13 @@ def emp(request):
         page_obj = paginator.get_page(page)
         context = {'emp_list':page_obj} # 오류 발생으로 emp_info foreign key 삭제(직업명)
         return render(request, 'prediction/emp.html', context=context)
+
+def search(self, request):
+        city           = request.GET.getlist('city', None)
+        job_name            = request.GET.getlist('job_name', None)
+
+        if color:
+            products = products.filter(productoption__city__in=city).distinct()
+
+        if size:
+            products = products.filter(productoption__job_name=job_name).distinct()
