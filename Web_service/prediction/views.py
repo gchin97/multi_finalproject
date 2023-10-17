@@ -35,19 +35,19 @@ def emp(request):
         selected_cities = request.POST.getlist("city")
         selected_jobs = request.POST.getlist("job_name")
 
-        emp_list = EmpInfo.objects.all()
+        emp_list = EmpInfo.objects.all().values('city', 'job_name', 'company').distinct()
 
         if selected_cities:
-            emp_list = emp_list.filter(city__in=selected_cities)
+            emp_list = emp_list.filter(city__in=selected_cities).values('city', 'job_name', 'company').distinct()
         if selected_jobs:
-            emp_list = emp_list.filter(job_name__in=selected_jobs)
+            emp_list = emp_list.filter(job_name__in=selected_jobs).values('city', 'job_name', 'company').distinct()
 
         paginator = Paginator(emp_list, 10)
         page = request.GET.get('page', '1')
         page_obj = paginator.get_page(page)
     else:
         # 초기 페이지 로드
-        emp_list = EmpInfo.objects.all()
+        emp_list = EmpInfo.objects.all().values('city', 'job_name', 'company').distinct()
         paginator = Paginator(emp_list, 10)
         page = request.GET.get('page', '1')
         page_obj = paginator.get_page(page)
@@ -67,9 +67,9 @@ def search(request):
             emp_list = EmpInfo.objects.all()
 
             if selected_cities:
-                emp_list = emp_list.filter(city__in=selected_cities)
+                emp_list = emp_list.filter(city__in=selected_cities).values('city', 'job_name', 'company').distinct()
             if selected_jobs:
-                emp_list = emp_list.filter(job_name__in=selected_jobs)
+                emp_list = emp_list.filter(job_name__in=selected_jobs).values('city', 'job_name', 'company').distinct()
 
             return render(request, 'prediction/emp.html', {'city_list': city_list, 'job_list': job_list, 'emp_list': emp_list})
     else:
