@@ -5,7 +5,7 @@ from django.contrib.auth.hashers import check_password
 from django.contrib import messages, auth
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 from django.contrib.auth import logout as auth_logout
-from .forms import UserCreationForm, NormalUserChangeForm
+from .forms import UserCreationForm, NormalUserChangeForm, CheckPasswordForm
 
 # Create your views here.
 # 회원가입
@@ -72,4 +72,19 @@ def change_password(request):
             messages.error(request, 'Password not changed')
     else:
         form = PasswordChangeForm(request.user)
-    return render(request, 'common/changepassword.html',{'form':form})
+    return render(request, 'common/update.html',{'form':form})
+
+# 회원탈퇴 
+#login_message_required
+def profile_delete_view(request):
+    if request.method == 'POST':
+        password_form = CheckPasswordForm(request.user, request.POST)
+        
+        if password_form.is_valid():
+            request.user.delete()
+            logout(request)
+            return redirect('/common/login/')
+    else:
+        password_form = CheckPasswordForm(request.user)
+
+    return render(request, 'common/profile_delete.html', {'password_form':password_form})
