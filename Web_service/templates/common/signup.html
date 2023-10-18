@@ -6,13 +6,13 @@
     {% csrf_token %}
     {% include "form_errors.html" %}
       <div class="user-box">
-        <input type="text" name="user_id" id="user_id" required="" class="form-control"
+        <input type="text" name="user_id" id="user_id" required="" class="form-control" 
                   value="{{form.user_id.value|default_if_none:""}}">
         <label>Username(e-mail)</label>
       </div>
 
       <div class="user-box">
-        <input type="password" name="password1" id="password1" required="" class="form-control"
+        <input type="password" name="password1" id="password1" required="" class="form-control" autocomplete="new-password"
                   value="{{form.password1.value|default_if_none:""}}">
         <label>Password</label>
       </div>
@@ -24,9 +24,9 @@
       </div>   
 
       <div class="user-box">
-          <input type="text" name="age" id="age" required="" class="form-control"
-              value="{{form.age.value|default_if_none:""}}">
-          <label for="age">Age</label>
+          <input type="date" name="birth_date" id="birth_date" class="form-control"
+              value="{{form.birth_date.value|default_if_none:""}}">
+          <label for="birth_date">birth_date</label>
       </div>
       <br>
 
@@ -41,6 +41,8 @@
       <br>
       <br>
       <br>
-      <button type="submit" class="btn btn-primary"><span>Creat</span></button>
+      <button type="submit" class="btn btn-primary"><span>Create</span></button>
+  </form>
+  <p style="color:#fff"><font size=2.5>Do you already have an ID?</font>   <a href="{% url "common:login" %}"><u><strong>Log In</strong></u></a></p>
 
 </div> 

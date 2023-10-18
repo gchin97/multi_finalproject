@@ -17,37 +17,35 @@ class UseService(models.Model):
 
 class CustomUserManager(BaseUserManager):
     use_in_migrations = True
-    
-    def create_user(self, user_id, gender, age, password=None):
+
+    def create_user(self, user_id, gender, birth_date, password=None):
         if not user_id:
             raise ValueError("Users must have an email address")
         user = self.model(
             user_id=self.normalize_email(user_id),
             gender=gender,
-            age=age,
+            birth_date=birth_date,
         )
         user.set_password(password)
         user.save(using=self._db)
         return user
-
-    def create_superuser(self, user_id, password, gender, age):
+        
+    def create_superuser(self, user_id, password, gender, birth_date):
         user = self.create_user(
             user_id,
             password=password,
             gender=gender,
-            age=age,
+            birth_date=birth_date,
         )
         user.is_superuser = True
         user.is_admin = True
-        # user.is_staff = True
         user.save(using=self._db)
         return user
-        
         
 class UserInfo(AbstractBaseUser, PermissionsMixin):
     user_id = models.EmailField(max_length=255, unique=True)
     gender = models.CharField(max_length=5, blank=True, null=True)
-    age = models.IntegerField(blank=True, null=True)
+    birth_date = models.DateField(blank=True, null=True)
     is_admin = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     is_superuser = models.BooleanField(default=False)
@@ -61,7 +59,7 @@ class UserInfo(AbstractBaseUser, PermissionsMixin):
         db_table = 'user_info'
     
     USERNAME_FIELD = 'user_id'
-    REQUIRED_FIELDS = ['gender', 'age']
+    REQUIRED_FIELDS = ['gender', 'birth_date']
 
     def __str__(self):
         return self.user_id
