@@ -35,19 +35,19 @@ def emp(request):
         selected_cities = request.POST.getlist("city")
         selected_jobs = request.POST.getlist("job_name")
 
-        emp_list = EmpInfo.objects.all().values('city', 'job_name', 'company').distinct()
+        emp_list = EmpInfo.objects.all().values('city', 'job_name', 'company', 'link', 'ncs_code').distinct()
 
         if selected_cities:
-            emp_list = emp_list.filter(city__in=selected_cities).values('city', 'job_name', 'company').distinct()
+            emp_list = emp_list.filter(city__in=selected_cities).values('city', 'job_name', 'company', 'link', 'ncs_code').distinct()
         if selected_jobs:
-            emp_list = emp_list.filter(job_name__in=selected_jobs).values('city', 'job_name', 'company').distinct()
+            emp_list = emp_list.filter(job_name__in=selected_jobs).values('city', 'job_name', 'company', 'link', 'ncs_code').distinct()
 
         paginator = Paginator(emp_list, 10)
         page = request.GET.get('page', '1')
         page_obj = paginator.get_page(page)
     else:
         # 초기 페이지 로드
-        emp_list = EmpInfo.objects.all().values('city', 'job_name', 'company').distinct()
+        emp_list = EmpInfo.objects.all().values('city', 'job_name', 'company', 'link', 'ncs_code').distinct()
         paginator = Paginator(emp_list, 10)
         page = request.GET.get('page', '1')
         page_obj = paginator.get_page(page)
@@ -67,10 +67,21 @@ def search(request):
             emp_list = EmpInfo.objects.all()
 
             if selected_cities:
-                emp_list = emp_list.filter(city__in=selected_cities).values('city', 'job_name', 'company').distinct()
+                emp_list = emp_list.filter(city__in=selected_cities).values('city', 'job_name', 'company', 'link', 'ncs_code').distinct()
             if selected_jobs:
-                emp_list = emp_list.filter(job_name__in=selected_jobs).values('city', 'job_name', 'company').distinct()
+                emp_list = emp_list.filter(job_name__in=selected_jobs).values('city', 'job_name', 'company', 'link', 'ncs_code').distinct()
 
             return render(request, 'prediction/emp.html', {'city_list': city_list, 'job_list': job_list, 'emp_list': emp_list})
     else:
         return render(request, 'common/login.html')
+    
+def education(request, ncs_code):
+    if request.method == 'GET':
+        # Education 모델에서 ncs_code로 조회
+        education_info = Education.objects.filter(ncs_code=ncs_code).values('train_title', 'start_date', 'end_date', 'train_center', 'quota', 'link')
+
+        # EducationCenter 모델에서 train_center로 조회
+        center_info = EducationCenter.objects.filter(train_center__in=education_info.values_list('train_center', flat=True)).values('address', 'center_tel')
+        
+        context = {'education_info': education_info, 'center_info': center_info}
+        return render(request, 'prediction/education.html', context)

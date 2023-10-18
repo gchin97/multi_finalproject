@@ -40,9 +40,11 @@
         <tr class="text-center table-dark">
             <th>번호</th>
             <th>지역</th>
+            <th>NCS 코드</th>
             <th>직업명</th>
             <th>기업명</th>
             <th>링크</th>
+            <th>관련 교육</th>
         </tr>
     </thead>
     {% if emp_list %}
@@ -56,13 +58,21 @@
             <td>
                 {{emp.city}}
             </td>
+            <td>
+                {{emp.ncs_code}}
+            </td>
             <td class="text-center">
                 {{emp.job_name}}
             </td>
-            <td class="text-start">
+            <td class="text-center">
                 {{emp.company}}
             </td>
-            <td><a href="{{emp.link}}" target="_blank">채용공고 확인</a></td>
+            <td>
+                <a href="{{emp.link}}" target="_blank">채용공고 확인</a>
+            </td>
+            <td>
+                <a href="{% url 'prediction:education' ncs_code=emp.ncs_code %}">자세히 보기</a>
+            </td>
         </tr>
         {% endfor %}
         {% endif %}
