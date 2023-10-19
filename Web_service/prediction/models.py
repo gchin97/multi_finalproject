@@ -89,9 +89,9 @@ class EmpPrediction(models.Model):
 
 class PredictionResult(models.Model):
     no = models.AutoField(primary_key=True)
-    date = models.DateField(blank=True, null=True)
-    city = models.CharField(max_length=10, blank=True, null=True)
-    industry = models.CharField(max_length=50, blank=True, null=True)
+    date = models.IntegerField(null=False)
+    city = models.CharField(max_length=10, null=False)
+    industry = models.CharField(max_length=50, null=False)
     result = models.DecimalField(max_digits=15, decimal_places=0, blank=True, null=True)
     user_id = models.CharField(max_length=300, blank=True, null=True)
 

@@ -26,6 +26,9 @@
                     {% endif %}
                     <!-- 오류표시 End -->
                     <div class="mb-3">
+                        <label for="user_id"></label>
+                        <input type="hidden" name="user_id" id="user_id" readonly class="input"
+                        value="{{ user }}">
                         <label for="city">시도</label>
                             <select name="city" id="city" class="form-control" onchange="selectDistrict()">
                                 <option value="">지역을 선택하세요</option>
@@ -60,21 +63,26 @@
                             </select>
                     </div>
                     <div class="mb-3">
-                        <label for="text" class="form-control">년월을 입력하세요</label>
-                        <input type="number" name="date" class="form-control" id="date">
-                        <input type="text" name="job_search" class="form-control">
-                        <input type="text" name="no_company" class="form-control">
-                        <input type="text" name="unemployment" class="form-control">
-                        <input type="text" name="population" class="form-control">
-                        <input type="text" name="GDP" class="form-control">
-                        <input type="text" name="i_rate" class="form-control">
-                        <input type="text" name="CLI" class="form-control">
-                        <input type="text" name="CFI" class="form-control">
+                        <label for="date">2024년 중 월을 선택하세요</label>
+                            <select name="date" id="date" class="form-control">
+                                <option value="202401">1월</option>
+                                <option value="202402">2월</option>
+                                <option value="202403">3월</option>
+                                <option value="202404">4월</option>
+                                <option value="202405">5월</option>
+                                <option value="202406">6월</option>
+                                <option value="202407">7월</option>
+                                <option value="202408">8월</option>
+                                <option value="202409">9월</option>
+                                <option value="202410">10월</option>
+                                <option value="202411">11월</option>
+                                <option value="202412">12월</option>
+                            </select>
                     </div>
                         <button type="submit" class="btn btn-primary text-center">예측하기</button>
-                        <button type="reset" class="btn btn-primary text-center">초기화</button>
+                        <button type="reset" class="btn btn-primary text-center">선택 초기화</button>
                         {% if result %}
-                        <h5 class="text-center">약 {{result}}명 정도로 예상됩니다.</h5>
+                        <h5 class="text-center">{{city}} 지역의 {{industry}} 개발 직군 일자리는 약 {{result}}명 정도로 예상됩니다.</h5>
                         {% endif %}
                 </form>
             </div>
@@ -82,171 +90,3 @@
     </section>
 </div>
 {% endblock content %}
-{% block script %}
-<script>
-    function selectDistrict() {
-        var districtSelect = document.getElementById('city');
-        var selectedDistrict = districtSelect.value;
-        
-        var districtData ={
-            '서울':{'population':'1', 'GDP':'', 'i_rate':'', 'CLI':'', 'CFI':''},
-            '부산':{'population':'2', 'GDP':'', 'i_rate':'', 'CLI':'', 'CFI':''},
-            '대구':{'population':'3', 'GDP':'', 'i_rate':'', 'CLI':'', 'CFI':''},
-            '인천':{'population':'4', 'GDP':'', 'i_rate':'', 'CLI':'', 'CFI':''},
-            '광주':{'population':'5', 'GDP':'', 'i_rate':'', 'CLI':'', 'CFI':''},
-            '대전':{'population':'6', 'GDP':'', 'i_rate':'', 'CLI':'', 'CFI':''},
-            '울산':{'population':'7', 'GDP':'', 'i_rate':'', 'CLI':'', 'CFI':''},
-            '세종':{'population':'8', 'GDP':'', 'i_rate':'', 'CLI':'', 'CFI':''},
-            '경기':{'population':'9', 'GDP':'', 'i_rate':'', 'CLI':'', 'CFI':''},
-            '강원':{'population':'10', 'GDP':'', 'i_rate':'', 'CLI':'', 'CFI':''},
-            '충북':{'population':'11', 'GDP':'', 'i_rate':'', 'CLI':'', 'CFI':''},
-            '충남':{'population':'12', 'GDP':'', 'i_rate':'', 'CLI':'', 'CFI':''},
-            '전북':{'population':'13', 'GDP':'', 'i_rate':'', 'CLI':'', 'CFI':''},
-            '전남':{'population':'14', 'GDP':'', 'i_rate':'', 'CLI':'', 'CFI':''},
-            '경북':{'population':'15', 'GDP':'', 'i_rate':'', 'CLI':'', 'CFI':''},
-            '경남':{'population':'16', 'GDP':'', 'i_rate':'', 'CLI':'', 'CFI':''},
-            '제주':{'population':'17', 'GDP':'', 'i_rate':'', 'CLI':'', 'CFI':''},
-            '':{'population':'18', 'GDP':'', 'i_rate':'', 'CLI':'', 'CFI':''},
-        };
-        
-        if (selectedDistrict in districtData) {
-            var data = districtData[selectedDistrict];
-            document.querySelector('input[name="population"]').value = data.population;
-            document.querySelector('input[name="GDP"]').value = data.GDP;
-            document.querySelector('input[name="i_rate"]').value = data.i_rate;
-            document.querySelector('input[name="CLI"]').value = data.CLI;
-            document.querySelector('input[name="CFI"]').value = data.CFI;
-        }
-    }
-    
-    function selectIndustry() {
-        var districtSelect = document.getElementById('city');
-        var selectedDistrict = districtSelect.value;
-        var IndustrySelect = document.getElementById('industry');
-        var selectedIndustry = IndustrySelect.value;
-        
-        var jejo ={
-            '서울':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '부산':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '대구':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '인천':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '광주':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '대전':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '울산':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '세종':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '경기':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '강원':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '충북':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '충남':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '전북':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '전남':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '경북':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '경남':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '제주':{'job_search':'', 'no_company':'', 'unemployment':''},
-        };
-        var dome ={
-            '서울':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '부산':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '대구':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '인천':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '광주':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '대전':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '울산':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '세종':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '경기':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '강원':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '충북':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '충남':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '전북':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '전남':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '경북':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '경남':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '제주':{'job_search':'', 'no_company':'', 'unemployment':''},
-        };
-        var it ={
-            '서울':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '부산':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '대구':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '인천':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '광주':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '대전':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '울산':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '세종':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '경기':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '강원':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '충북':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '충남':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '전북':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '전남':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '경북':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '경남':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '제주':{'job_search':'', 'no_company':'', 'unemployment':''},
-        };
-        var scienceService ={
-            '서울':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '부산':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '대구':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '인천':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '광주':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '대전':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '울산':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '세종':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '경기':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '강원':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '충북':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '충남':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '전북':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '전남':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '경북':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '경남':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '제주':{'job_search':'', 'no_company':'', 'unemployment':''},
-        };
-        var saup ={
-            '서울':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '부산':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '대구':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '인천':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '광주':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '대전':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '울산':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '세종':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '경기':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '강원':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '충북':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '충남':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '전북':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '전남':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '경북':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '경남':{'job_search':'', 'no_company':'', 'unemployment':''},
-            '제주':{'job_search':'', 'no_company':'', 'unemployment':''},
-        };
-        
-        if (selectedIndustry == '제조업') {
-            var data = jejo[selectedIndustry];
-            document.querySelector('input[name="job_search"]').value = data.job_search;
-            document.querySelector('input[name="no_company"]').value = data.no_company;
-            document.querySelector('input[name="unemployment"]').value = data.unemployment;
-        } else if (selectedIndustry == '도매 및 소매업') {
-            var data = dome[selectedIndustry];
-            document.querySelector('input[name="job_search"]').value = data.job_search;
-            document.querySelector('input[name="no_company"]').value = data.no_company;
-            document.querySelector('input[name="unemployment"]').value = data.unemployment;
-        } else if (selectedIndustry == '정보통신업') {
-            var data = it[selectedIndustry];
-            document.querySelector('input[name="job_search"]').value = data.job_search;
-            document.querySelector('input[name="no_company"]').value = data.no_company;
-            document.querySelector('input[name="unemployment"]').value = data.unemployment;
-        } else if (selectedIndustry == '전문, 과학 및 기술 서비스업') {
-            var data = scienceService[selectedIndustry];
-            document.querySelector('input[name="job_search"]').value = data.job_search;
-            document.querySelector('input[name="no_company"]').value = data.no_company;
-            document.querySelector('input[name="unemployment"]').value = data.unemployment;
-        } else if (selectedIndustry == '사업시설 관리, 사업 지원 및 임대 서비스업') {
-            var data = saup[selectedIndustry];
-            document.querySelector('input[name="job_search"]').value = data.job_search;
-            document.querySelector('input[name="no_company"]').value = data.no_company;
-            document.querySelector('input[name="unemployment"]').value = data.unemployment;
-        }
-    }
-</script>
-{% endblock script %}
