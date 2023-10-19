@@ -6,7 +6,7 @@
         <div class="container">
                 <div class="col">
                     <br>
-                    <h4 class="text-center">지역</h4>
+                    <h4 class="text-left">지역 선택</h4>
                     <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
                         {% if city_list %}
                         {% for city in city_list %}
@@ -18,7 +18,7 @@
                 </div>
                 <br>
                 <div class="col">
-                    <h4 class="text-center">직업 선택</h4>
+                    <h4 class="text-left">직업 선택</h4>
                     <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
                         {% if job_list %}
                         {% for job in job_list %}
@@ -35,16 +35,20 @@
             </button>
     </form>
 </br>
+
+
+<div class="container">
+<h3>채용공고<h3>
 <table class="table">
     <thead>
         <tr class="text-center table-dark">
             <th>번호</th>
             <th>지역</th>
-            <th>NCS 코드</th>
+            {% comment %} <th>NCS 코드</th> {% endcomment %}
             <th>직업명</th>
             <th>기업명</th>
             <th>링크</th>
-            <th>관련 교육</th>
+            {% comment %} <th>관련 교육</th> {% endcomment %}
         </tr>
     </thead>
     {% if emp_list %}
@@ -58,9 +62,9 @@
             <td>
                 {{emp.city}}
             </td>
-            <td>
+            {% comment %} <td>
                 {{emp.ncs_code}}
-            </td>
+            </td> {% endcomment %}
             <td class="text-center">
                 {{emp.job_name}}
             </td>
@@ -70,9 +74,9 @@
             <td>
                 <a href="{{emp.link}}" target="_blank">채용공고 확인</a>
             </td>
-            <td>
+            {% comment %} <td>
                 <a href="{% url 'prediction:education' ncs_code=emp.ncs_code %}">자세히 보기</a>
-            </td>
+            </td> {% endcomment %}
         </tr>
         {% endfor %}
         {% endif %}
@@ -117,4 +121,97 @@
     </ul>
     <!-- 페이징처리 끝 -->
 </div>
+
+<div class="container" style= "overflow-y: scroll";>
+    <br>
+    <h3>교육 정보</h3>
+    <table class="table">
+        <thead>
+            <tr class="text-center table-dark">
+                <th>번호</th>
+                <th>교육명</th>
+                <th>시작일</th>
+                <th>종료일</th>
+                <th>센터명</th>
+                <th>주소</th>
+                <th>전화번호</th>
+                <th>링크</th>
+            </tr>
+        </thead>
+        {% if education_info %}
+        {% for education in education_info %}
+        {% if center_info %}
+        {% for center in center_info %}
+        <tbody>
+            <tr class="text-center">
+                <td>
+                    <!-- 번호 = 전체건수 - 시작인덱스 - 현재 인덱스 + 1 -->
+                    {{ forloop.counter }}
+                </td>
+                <td>
+                    {{education.train_title}}
+                </td>
+                <td class="text-center">
+                    {{education.start_date}}
+                </td>
+                <td class="text-start">
+                    {{education.end_date}}
+                </td>
+                <td class="text-start">
+                    {{education.train_center}}
+                </td>
+                <td class="text-start">
+                    {{center.address}}
+                </td>
+                <td>
+                    {{center.center_tel}}
+                </td>
+                <td>
+                    <a href="{{education.link}}" target="_blank">교육 링크</a>
+                </td>
+            </tr>
+        {% endfor %}
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        </tbody>
+    </table>
+</div>
+    <!-- 페이징처리 시작 -->
+    <ul class="pagination justify-content-center">
+        <!-- 이전 페이지 -->
+        {% if emp_list.has_previous %}
+        <li class="page-item">
+            <a href="?page={{emp_list.previous_page_number}}" class="page-link"> < 이전</a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <a href="#" class="page-link" tabindex="-1" aria-disabled="true"> < 이전</a>
+        </li>
+        {% endif %}
+        <!-- 페이지 리스트 -->
+        {% for page_number in emp_list.paginator.page_range %}
+        {% if page_number >= emp_list.number|add:-5 and page_number <= emp_list.number|add:+5 %}
+        {% if page_number == emp_list.number %}
+        <li class="page-item active" aria-current="page">
+            <a href="?page={{page_number}}" class="page-link">{{page_number}}</a>
+        </li>
+        {% else %}
+        <li class="page-item">
+            <a href="?page={{page_number}}" class="page-link">{{page_number}}</a>
+        </li>
+        {% endif %}
+        {% endif %}
+        {% endfor %}
+        <!-- 다음 페이지 -->
+        {% if emp_list.has_next %}
+        <li class="page-item">
+            <a href="?page={{emp_list.next_page_number}}" class="page-link">다음 > </a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <a href="#" class="page-link" tabindex="-1" aria-disabled="true">다음 > </a>
+        </li>
+        {% endif %}
+    </ul>
 {% endblock content %}
