@@ -3,6 +3,9 @@ from django.utils import timezone
 from .forms import EmpPredictionForm
 from .models import *
 from django.core.paginator import Paginator
+from .functions import prediction
+import pandas as pd
+from common.models import UseService, UserInfo
 
 # Create your views here.
 def index(request):
@@ -17,12 +20,21 @@ def predict(request):
     if request.method == 'POST':
         form = EmpPredictionForm(request.POST)
         if form.is_valid():
-            predict = form.save(commit=False)
-            result = 1
-            return render(request, 'prediction/predict.html', {'result':result})
+            predict = form.save(commit=False) # 입력 데이터 들고오기
+            predict_data = pd.DataFrame({'date':predict.date, 'industry':predict.industry, 'city':predict.city}, index=[0])
+            result = prediction(predict_data)
+            predict.result = result
+            form.save()
+            use_service = UseService(user=UserInfo.objects.get(user_id=predict.user_id), service_code=1,
+                                     city=predict.city, industry=predict.industry,
+                                     use_date=timezone.now())
+            use_service.save()
+            date = str(predict.date)
+            month = int(date[-2:])
+            context = {'result':result, 'city':predict.city, 'industry':predict.industry, 'month':month}
+            return render(request, 'prediction/predict.html', context=context)
     else:
         form = EmpPredictionForm()
-    result = 0
     context = {'form':form}
     return render(request, 'prediction/predict.html', context)
 
