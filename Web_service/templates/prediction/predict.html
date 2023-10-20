@@ -83,12 +83,18 @@
                         <button type="reset" class="btn btn-primary text-center">선택 초기화</button>
                         {% if result %}
                         <br>
-                        <h5 class="text-center">{{city}} 지역의 2024년 {{month}}월 {{industry}} 개발 직군 일자리는 약 {{result}}명 정도로 예상됩니다.</h5>
+                        <br>
+                        <br>
+                        <h5 class="text-center" style="font-size:1.5rem;">
+                            {{city}} 지역의 2024년 {{month}}월 {{industry}} 개발 직군 일자리는 약 <strong>{{result}}명</strong> 정도로 예상됩니다.
+                        </h5>
                         {% endif %}
                 </form>
             </div>
         </div>
     </section>
+    <br>
+    <hr>
     <br>
     <section>
         <div class="row">
