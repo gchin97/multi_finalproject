@@ -72,7 +72,7 @@ CREATE TABLE `use_service` (
 
 CREATE TABLE `prediction_result` (
 	`no`	int auto_increment	NOT NULL,
-	`date`	date	NULL,
+	`date`	int	NULL,
 	`city`	varchar(10)	NULL,
 	`industry`	varchar(50)	NULL,
 	`result`	decimal(15)	NULL,
