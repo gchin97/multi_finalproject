@@ -1,137 +1,312 @@
-{% extends "base.html" %}
-{% block content %}
-{% load static %}
+{% extends "base.html" %} {% block content %} {% load static %}
 <!--Main Navigation-->
 <header class="mb-10">
-    <!-- Section: Split screen -->
-    <section class="">
-        <div class="container-fluid px-0">
-            <div class="row g-0">
-                <!-- First column -->
-                <div class="col-lg-6 vh-100 d-flex flex-column justify-content-center align-items-center">
-  
-                    <!-- Headings -->
-                    <div class="h-100 d-flex justify-content-center align-items-center px-5">
-  
-                        <div class="">
-                            <img src="{%static 'rising.png' %}">
-                            <h1 class="display-4" style="font-weight: bold; text-align: center;">일 어서!</h1>
-                            <br>
-                            <a class="btn btn-primary btn-lg btn-rounded" href="{% url "common:login" %}" role="button">login
-                                <i class="fas fa-angle-down ms-2"></i></a>
-                            <a class="btn btn-primary btn-lg btn-rounded" href="{% url "common:signup" %}" role="button">sign up
-                                <i class="fas fa-angle-down ms-2"></i></a>
-                        </div>
-  
-                    </div>
-
-                </div>
-                <!-- First column -->
-                <!-- Second column -->
-                <div class="col-lg-6 d-none d-lg-inline-block vh-100">
-  
-                    <!-- Carousel wrapper -->
-                    <div id="carouselBasicExample" class="carousel slide carousel-fade" data-mdb-ride="carousel">
-                        <!-- Indicators -->
-                        <div class="carousel-indicators">
-                            <button type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide-to="0"
-                                    class="rounded-circle active" style="width: 7px; height: 7px" aria-current="true"
-                                    aria-label="Slide 1"></button>
-                            <button type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide-to="1" aria-label="Slide 2"
-                                    class="rounded-circle" style="width: 7px; height: 7px"></button>
-                            <button type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide-to="2" aria-label="Slide 3"
-                                    class="rounded-circle" style="width: 7px; height: 7px"></button>
-                        </div>
-  
-                        <!-- Inner -->
-
-                        <div class="carousel-inner shadow-5-strong" style="border-bottom-left-radius: 4rem; background-color: rgb(200, 200, 200); position: relative;">
-                            <!-- Single item -->
-                            <div class="carousel-item active">
-                                <img src="{%static 'index_1.svg'%}" style = "max-width: 100%; max-height: 50%;"
-                                    class="d-block vh-100 vw-100 object-cover" alt="15 years of experience in the IT industry" />
-                                    <div class="carousel-caption d-md-block" style="position: absolute; top: 38%; left: 45%; transform: translate(-50%, -50%); text-align: center; margin-right: 10px; color: black; display: inline-block;">
-                                        <h5 style="font-size: 40px; color: black; font-weight: bold;">제공 서비스</h5>
-                                    </div>
-                                        <div class="carousel-caption d-md-block" style="position: absolute; top: 45%; left: 25%; transform: translate(-50%, -50%); text-align: center; margin-right: 10px; color: black; display: inline-block;">
-                                            <h5 style="font-size: 24px; color: black;">관심 직군 채용 인원 수 예측</h5>
-
-                                        </div>
-                                        <div class="carousel-caption d-md-block" style="position: absolute; top: 45%; left: 45%; transform: translate(-50%, -50%); text-align: center; margin-right: 10px; color: black; display: inline-block;">
-                                            <h5 style="font-size: 24px; color: black;">  |  </h5>
-                                        </div>
-                                        <div class="carousel-caption d-md-block" style="position: absolute; top: 45%; left: 60%; transform: translate(-50%, -50%); text-align: center; margin-right: 10px; color: black; display: inline-block;">
-                                            <h5 style="font-size: 24px; color: black;">채용 공고 및 교육</h5>
-                                        </div>
-                                    
-                                    
-                                    
-                                    
-                                    
-                            </div>
-  
-                            <!-- Single item -->
-                            <div class="carousel-item">
-                                <img src="{%static 'index_1-2.svg'%}" style = "max-width: 100%; max-height: 100%;"
-                                    class="d-block vh-100 vw-100 object-cover" alt="15 years of experience in the IT industry" />
-                                            <div class="carousel-caption d-md-block" style="position: absolute; top: 38%; left: 22%; transform: translate(-50%, -50%); text-align: center; margin-right: 10px; color: black;">
-                                                <h5 style = "font-size: 24px; color: black;">일자리가 사라져가고 있는 지금! <br> 내 일자리 전망이 궁금하다면? </h5>
-                                                    <p style = 'font-size: 18px; color: black; width: 80%;'>채용 인원 예측</p>
-                                </div>
-                            </div>
-  
-                            <!-- Single item -->
-                            <div class="carousel-item">
-                                <img src="{%static 'index_2-1.svg'%}" style = "max-width: 100%; max-height: 100%;"
-                                class="d-block vh-100 vw-100 object-cover" alt="15 years of experience in the IT industry" />
-                           
-                                <div class="carousel-caption d-md-block" style="position: absolute; bottom: 10%; left: 30%; transform: translate(-50%, -50%); text-align: center; margin-right: 10px; color: black;">
-                                    <h5 style = "font-size: 24px; color: black;">우리 동네에는 어떤 일자리와 <br> 어떤 교육이 있을까? </h5>
-                                        <p style = 'font-size: 18px; color: black; width: 80%;'>채용 공고 및 교육</p>
-                        
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Inner -->
-  
-                        <!-- Controls -->
-                        <button class="carousel-control-prev" type="button" data-mdb-target="#carouselBasicExample"
-                                data-mdb-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-mdb-target="#carouselBasicExample"
-                                data-mdb-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
-                    </div>
-                    <!-- Carousel wrapper -->
-  
-                </div>
-                <!-- Second column -->
-  
+  <!-- Section: Split screen -->
+  <section class="">
+    <div class="container-fluid px-0">
+      <div class="row g-0">
+        <!-- First column -->
+        <div
+          class="col-lg-6 vh-100 d-flex flex-column justify-content-center align-items-center"
+        >
+          <!-- Headings -->
+          <div
+            class="h-100 d-flex flex-column justify-content-center align-items-center px-5"
+          >
+            <div class="text-center mb-4">
+              <img src="{% static 'rising.png' %}" />
+              <h1
+                class="display-4"
+                style="font-weight: bold; text-align: center"
+              >
+                일 어서!
+              </h1>
             </div>
+
+            <div class="mb-4">
+              <a
+                class="btn btn-primary btn-lg btn-rounded"
+                href="{% url 'common:login' %}"
+                role="button"
+                >Login
+                <i class="fas fa-angle-down ms-2"></i>
+              </a>
+            </div>
+
+            <div>
+              <a
+                class="btn btn-primary btn-lg btn-rounded"
+                href="{% url 'common:signup' %}"
+                role="button"
+                >Sign up
+                <i class="fas fa-angle-down ms-2"></i>
+              </a>
+            </div>
+          </div>
         </div>
-  
-    </section>
-    <!-- Section: Split screen -->
-  
+        <!-- First column -->
+        <!-- Second column -->
+        <div class="col-lg-6 d-none d-lg-inline-block vh-100">
+          <!-- Carousel wrapper -->
+          <div
+            id="carouselBasicExample"
+            class="carousel slide carousel-fade"
+            data-mdb-ride="carousel"
+          >
+            <!-- Indicators -->
+            <div class="carousel-indicators">
+              <button
+                type="button"
+                data-mdb-target="#carouselBasicExample"
+                data-mdb-slide-to="0"
+                class="rounded-circle active"
+                style="width: 7px; height: 7px"
+                aria-current="true"
+                aria-label="Slide 1"
+              ></button>
+              <button
+                type="button"
+                data-mdb-target="#carouselBasicExample"
+                data-mdb-slide-to="1"
+                aria-label="Slide 2"
+                class="rounded-circle"
+                style="width: 7px; height: 7px"
+              ></button>
+              <button
+                type="button"
+                data-mdb-target="#carouselBasicExample"
+                data-mdb-slide-to="2"
+                aria-label="Slide 3"
+                class="rounded-circle"
+                style="width: 7px; height: 7px"
+              ></button>
+            </div>
+
+            <!-- Inner -->
+
+            <div
+              class="carousel-inner shadow-5-strong"
+              style="
+                border-bottom-left-radius: 4rem;
+                background-color: rgb(200, 200, 200);
+                position: relative;
+              "
+            >
+              <!-- Single item -->
+              <div class="carousel-item active">
+                <img
+                  src="{%static 'index_1.svg'%}"
+                  style="max-width: 100%; max-height: 50%"
+                  class="d-block vh-100 vw-100 object-cover"
+                  alt="15 years of experience in the IT industry"
+                />
+                <div
+                  class="carousel-caption d-md-block"
+                  style="
+                    position: absolute;
+                    top: 38%;
+                    left: 45%;
+                    transform: translate(-50%, -50%);
+                    text-align: center;
+                    margin-right: 10px;
+                    color: black;
+                    display: inline-block;
+                  "
+                >
+                  <h5 style="font-size: 40px; color: black; font-weight: bold">
+                    제공 서비스
+                  </h5>
+                </div>
+                <div
+                  class="carousel-caption d-md-block"
+                  style="
+                    position: absolute;
+                    top: 45%;
+                    left: 25%;
+                    transform: translate(-50%, -50%);
+                    text-align: center;
+                    margin-right: 10px;
+                    color: black;
+                    display: inline-block;
+                  "
+                >
+                  <h5 style="font-size: 24px; color: black">
+                    관심 직군 채용 인원 수 예측
+                  </h5>
+                </div>
+                <div
+                  class="carousel-caption d-md-block"
+                  style="
+                    position: absolute;
+                    top: 45%;
+                    left: 45%;
+                    transform: translate(-50%, -50%);
+                    text-align: center;
+                    margin-right: 10px;
+                    color: black;
+                    display: inline-block;
+                  "
+                >
+                  <h5 style="font-size: 24px; color: black">|</h5>
+                </div>
+                <div
+                  class="carousel-caption d-md-block"
+                  style="
+                    position: absolute;
+                    top: 45%;
+                    left: 60%;
+                    transform: translate(-50%, -50%);
+                    text-align: center;
+                    margin-right: 10px;
+                    color: black;
+                    display: inline-block;
+                  "
+                >
+                  <h5 style="font-size: 24px; color: black">
+                    채용 공고 및 교육
+                  </h5>
+                </div>
+              </div>
+
+              <!-- Single item -->
+              <div class="carousel-item">
+                <img
+                  src="{%static 'index_1-2.svg'%}"
+                  style="max-width: 100%; max-height: 100%"
+                  class="d-block vh-100 vw-100 object-cover"
+                  alt="15 years of experience in the IT industry"
+                />
+                <div
+                  class="carousel-caption d-md-block"
+                  style="
+                    position: absolute;
+                    top: 38%;
+                    left: 22%;
+                    transform: translate(-50%, -50%);
+                    text-align: center;
+                    margin-right: 10px;
+                    color: black;
+                  "
+                >
+                  <h5 style="font-size: 24px; color: black">
+                    일자리가 사라져가고 있는 지금! <br />
+                    내 일자리 전망이 궁금하다면?
+                  </h5>
+                  <p style="font-size: 18px; color: black; width: 80%">
+                    채용 인원 예측
+                  </p>
+                </div>
+              </div>
+
+              <!-- Single item -->
+              <div class="carousel-item">
+                <img
+                  src="{%static 'index_2-1.svg'%}"
+                  style="max-width: 100%; max-height: 100%"
+                  class="d-block vh-100 vw-100 object-cover"
+                  alt="15 years of experience in the IT industry"
+                />
+
+                <div
+                  class="carousel-caption d-md-block"
+                  style="
+                    position: absolute;
+                    bottom: 10%;
+                    left: 30%;
+                    transform: translate(-50%, -50%);
+                    text-align: center;
+                    margin-right: 10px;
+                    color: black;
+                  "
+                >
+                  <h5 style="font-size: 24px; color: black">
+                    우리 동네에는 어떤 일자리와 <br />
+                    어떤 교육이 있을까?
+                  </h5>
+                  <p style="font-size: 18px; color: black; width: 80%">
+                    채용 공고 및 교육
+                  </p>
+                </div>
+              </div>
+            </div>
+ <!-- Single item -->
+ <div class="carousel-item">
+    <img
+      src="{%static 'index_2-1.svg'%}"
+      style="max-width: 100%; max-height: 100%"
+      class="d-block vh-100 vw-100 object-cover"
+      alt="15 years of experience in the IT industry"
+    />
+
+    <div
+      class="carousel-caption d-md-block"
+      style="
+        position: absolute;
+        bottom: 10%;
+        left: 30%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        margin-right: 10px;
+        color: black;
+      "
+    >
+      <h5 style="font-size: 24px; color: black">
+        우리 동네에는 어떤 일자리와 <br />
+        어떤 교육이 있을까?
+      </h5>
+      <p style="font-size: 18px; color: black; width: 80%">
+        채용 공고 및 교육
+      </p>
+    </div>
+  </div>
+</div>
+
+            <!-- Inner -->
+
+            <!-- Controls -->
+            <button
+              class="carousel-control-prev"
+              type="button"
+              data-mdb-target="#carouselBasicExample"
+              data-mdb-slide="prev"
+            >
+              <span
+                class="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button
+              class="carousel-control-next"
+              type="button"
+              data-mdb-target="#carouselBasicExample"
+              data-mdb-slide="next"
+            >
+              <span
+                class="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+          <!-- Carousel wrapper -->
+        </div>
+        <!-- Second column -->
+      </div>
+    </div>
+  </section>
+  <!-- Section: Split screen -->
 </header>
 <!--Main Navigation-->
-  
+
 <!--Main layout-->
 <main>
-    <div class="container">
-        
-    </div>
+  <div class="container"></div>
 </main>
 <!--Main layout-->
-  
+
 <!--Footer-->
-<footer>
-    
-</footer>
+<footer></footer>
 <!--Footer-->
 
 {% endblock content %}
