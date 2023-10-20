@@ -82,10 +82,20 @@
                         <button type="submit" class="btn btn-primary text-center">예측하기</button>
                         <button type="reset" class="btn btn-primary text-center">선택 초기화</button>
                         {% if result %}
-                        <h5 class="text-center">{{city}} 지역의 {{industry}} 개발 직군 일자리는 약 {{result}}명 정도로 예상됩니다.</h5>
+                        <br>
+                        <h5 class="text-center">{{city}} 지역의 2024년 {{month}}월 {{industry}} 개발 직군 일자리는 약 {{result}}명 정도로 예상됩니다.</h5>
                         {% endif %}
                 </form>
             </div>
+        </div>
+    </section>
+    <br>
+    <section>
+        <div class="row">
+            <div class="text-center">
+                <h4><strong>지역별 채용 현황(2013~2022년 종합)</strong></h4>
+            </div>
+            <iframe src="https://public.tableau.com/shared/8C98R65TW?:showVizHome=no&amp;:embed=true" width="1024" height="768" frameborder="0"></iframe>
         </div>
     </section>
 </div>

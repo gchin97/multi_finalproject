@@ -3,7 +3,7 @@ from django.contrib.auth.models import AbstractUser, AbstractBaseUser, UserManag
 
 # Create your models here.
 class UseService(models.Model):
-    user = models.OneToOneField('UserInfo', models.DO_NOTHING, primary_key=True)
+    user = models.OneToOneField('UserInfo', models.DO_NOTHING, primary_key=False)
     service_code = models.IntegerField(blank=True, null=True)
     city = models.CharField(max_length=10, blank=True, null=True)
     industry = models.CharField(max_length=30, blank=True, null=True)

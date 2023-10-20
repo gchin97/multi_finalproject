@@ -5,6 +5,7 @@ from .models import *
 from django.core.paginator import Paginator
 from .functions import prediction
 import pandas as pd
+from common.models import UseService, UserInfo
 
 # Create your views here.
 def index(request):
@@ -24,7 +25,13 @@ def predict(request):
             result = prediction(predict_data)
             predict.result = result
             form.save()
-            context = {'result':result, 'city':predict.city, 'industry':predict.industry}
+            use_service = UseService(user=UserInfo.objects.get(user_id=predict.user_id), service_code=1,
+                                     city=predict.city, industry=predict.industry,
+                                     use_date=timezone.now())
+            use_service.save()
+            date = str(predict.date)
+            month = int(date[-2:])
+            context = {'result':result, 'city':predict.city, 'industry':predict.industry, 'month':month}
             return render(request, 'prediction/predict.html', context=context)
     else:
         form = EmpPredictionForm()
