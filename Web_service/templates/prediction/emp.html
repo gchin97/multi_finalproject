@@ -1,12 +1,14 @@
 {% extends "base.html" %}
 {% load prediction_filter %}
 {% block content %}
+
+<!-- 필터부분 -->
 <div class="container">
     <form action="{% url 'prediction:search' %}" method="get">
         <div class="container">
                 <div class="col">
                     <br>
-                    <h4 class="text-center">지역</h4>
+                    <h4 class="text-left">지역 선택</h4>
                     <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
                         {% if city_list %}
                         {% for city in city_list %}
@@ -18,7 +20,7 @@
                 </div>
                 <br>
                 <div class="col">
-                    <h4 class="text-center">직업 선택</h4>
+                    <h4 class="text-left">직업 선택</h4>
                     <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
                         {% if job_list %}
                         {% for job in job_list %}
@@ -28,23 +30,31 @@
                         {% endif %}
                     </div>
                 </div>
-            </div>
-            <br>
-            <button type="submit" value='filter' class="btn btn-primary text-center">
-                적용하기
-            </button>
+                <br>
+                <!-- 에러 메시지 표시 -->
+                {% if error_message %}
+                <p class="text-danger">{{ error_message }}</p>
+                {% endif %}
+                <button type="submit" value='filter' class="btn btn-primary text-center">적용하기</button>
+                <input type="submit" value='reset' class="btn btn-outline-primary" formaction="{% url 'prediction:emp' %}" style="margin-left: 15px;">
+                <div>
+                </div>
+        </div>
     </form>
+</div>
 </br>
-<table class="table">
+
+<!-- 채용공고 부분 -->
+<div class="container">
+    <h3>채용공고<h3>
+    <table class="table">
     <thead>
         <tr class="text-center table-dark">
             <th>번호</th>
             <th>지역</th>
-            <th>NCS 코드</th>
             <th>직업명</th>
             <th>기업명</th>
             <th>링크</th>
-            <th>관련 교육</th>
         </tr>
     </thead>
     {% if emp_list %}
@@ -58,9 +68,6 @@
             <td>
                 {{emp.city}}
             </td>
-            <td>
-                {{emp.ncs_code}}
-            </td>
             <td class="text-center">
                 {{emp.job_name}}
             </td>
@@ -70,14 +77,11 @@
             <td>
                 <a href="{{emp.link}}" target="_blank">채용공고 확인</a>
             </td>
-            <td>
-                <a href="{% url 'prediction:education' ncs_code=emp.ncs_code %}">자세히 보기</a>
-            </td>
         </tr>
         {% endfor %}
         {% endif %}
     </tbody>
-</table>
+    </table>
     <!-- 페이징처리 시작 -->
     <ul class="pagination justify-content-center">
         <!-- 이전 페이지 -->
@@ -92,7 +96,7 @@
         {% endif %}
         <!-- 페이지 리스트 -->
         {% for page_number in emp_list.paginator.page_range %}
-        {% if page_number >= emp_list.number|add:-5 and page_number <= emp_list.number|add:+5 %}
+        {% if page_number >= emp_list.number|add:-4 and page_number <= emp_list.number|add:+4 %}
         {% if page_number == emp_list.number %}
         <li class="page-item active" aria-current="page">
             <a href="?page={{page_number}}" class="page-link">{{page_number}}</a>
@@ -115,6 +119,66 @@
         </li>
         {% endif %}
     </ul>
-    <!-- 페이징처리 끝 -->
+<!-- 페이징처리 끝 -->
 </div>
+
+</br>
+<!-- 교육정보 부분 -->
+<div class="container">
+    <h3>교육 정보</h3>
+    <div class="container" style="overflow:scroll; height:500px;">
+        <table class="table">
+            <thead>
+                <tr class="text-center table-dark">
+                    <th>번호</th>
+                    <th>교육명</th>
+                    <th>시작일</th>
+                    <th>종료일</th>
+                    {% comment %} <th>센터명</th>
+                    <th>주소</th>
+                    <th>전화</th>  {% endcomment %}
+                    <th>링크</th>
+                </tr>
+            </thead>
+            {% if education_list %}
+            {% for education in education_list|dictsortreversed:"start_date" %}
+            {% comment %} {% if center_list %}
+            {% for center in center_list %} {% endcomment %}
+            <tbody>
+                <tr class="text-center">
+                    <td>
+                        <!-- 번호 = 전체건수 - 시작인덱스 - 현재 인덱스 + 1 -->
+                        {{ forloop.counter }}
+                    </td>
+                    <td class="text-start">
+                        {{education.train_title}}
+                    </td>
+                    <td class="text-center">
+                        {{education.start_date}}
+                    </td>
+                    <td class="text-start">
+                        {{education.end_date}}
+                    </td>
+                    {% comment %} <td class="text-start">
+                        {{education.train_center}}
+                    </td>
+                    <td class="text-start">
+                        {{center.address}}
+                    </td>
+                    <td>
+                        {{center.center_tel}}
+                    </td> {% endcomment %} 
+                    <td>
+                        <a href="{{education.link}}" target="_blank">교육 링크</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            {% endif %}
+            {% comment %} {% endfor %}
+            {% endif %} {% endcomment %}
+            </tbody>
+        </table>
+    </div>
+</div>
+</br>
 {% endblock content %}
