@@ -133,10 +133,4 @@ REFERENCES `NCS_code_info` (
 	`NCS_code`
 );
 
-ALTER TABLE `use_service` ADD CONSTRAINT `FK_user_info_TO_use_service_1` FOREIGN KEY (
-	`user_id`
-)
-REFERENCES `user_info` (
-	`user_id`
-);
 
