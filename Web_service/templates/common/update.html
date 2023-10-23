@@ -29,13 +29,13 @@
             </div>
 
             <div class="group">
-            <label  for="gender" class="label">성별</label>
+                <label for="gender" class="label">성별</label>
 
-            <input name="gender" id="male" type="radio" class="check" checked>
-            <label for="male"><span class="icon"></span>남성</label>
+                <input name="gender" id="male" type="radio" value="1" class="check" {% if form.gender.value == '1' %}checked{% endif %}>
+                <label for="male"><span class="icon"></span>남성</label>
 
-            <input name="gender" id="femail" type="radio" class="check">
-            <label for="femail"><span class="icon"></span>여성</label>
+                <input name="gender" id="female" type="radio" value="2" class="check" {% if form.gender.value == '2' %}checked{% endif %}>
+                <label for="female"><span class="icon"></span>여성</label>
             </div>
             
 
