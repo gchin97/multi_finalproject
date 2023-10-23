@@ -64,10 +64,6 @@ def emp(request):
     paginator = Paginator(unique_emp_list, 5)
     page = request.GET.get('page', '1')
     page_obj = paginator.get_page(page)
-    
-    # use_service = UseService(user=UserInfo.objects.get(user_id=request.user.user_id), service_code=2,
-    #                                  city=city_list, job_name=job_list, use_date=timezone.now())
-    # use_service.save()
 
     context = {'emp_list': page_obj, 'city_list': city_list, 'job_list': job_list, 'education_list' : education_list, 'center_list': center_list}
     return render(request, 'prediction/emp.html', context)
@@ -116,6 +112,12 @@ def search(request):
             paginator = Paginator(unique_emp_list, 5)
             page = request.GET.get('page', '1')
             page_obj = paginator.get_page(page)
+            
+            city_lists = ','.join(selected_cities)
+            job_names = ','.join(selected_jobs)
+            
+            use_service = UseService(user=UserInfo.objects.get(user_id=request.user.user_id), city=city_lists, job_name=job_names, service_code=2, use_date=timezone.now()) # city와 job_name 어떻게 넣을지?
+            use_service.save()
 
             return render(request, 'prediction/emp.html', {'city_list': city_list, 'job_list': job_list, 'education_list' : education_list, 'emp_list': page_obj , 'error_message':error_message})
     else:
