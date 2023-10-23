@@ -16,8 +16,8 @@
                     <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
                         {% if city_list %}
                         {% for city in city_list %}
-                        <input type="checkbox" name="city" value="{{ city }}" class="btn-check" autocomplete="off" id="city_{{ forloop.counter }}">
-                        <label for="city_{{ forloop.counter }}" class="btn btn-outline-primary"><strong>{{ city }}</strong></label>
+                        <input type="checkbox" name="city" value="{{ city }}" class="btn-check" autocomplete="off" id="city_{{ city }}">
+                        <label for="city_{{ city }}" class="btn btn-outline-primary"><strong>{{ city }}</strong></label>
                         {% endfor %}
                         {% endif %}
                     </div>
@@ -28,8 +28,8 @@
                     <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
                         {% if job_list %}
                         {% for job in job_list %}
-                        <input type="checkbox" name="job_name" value="{{ job }}" class="btn-check" autocomplete="off" id="job_{{ forloop.counter }}">
-                        <label for="job_{{ forloop.counter }}" class="btn btn-outline-primary"><strong>{{ job }}</strong></label>
+                        <input type="checkbox" name="job_name" value="{{ job }}" class="btn-check" autocomplete="off" id="job_{{ job }}">
+                        <label for="job_{{ job }}" class="btn btn-outline-primary"><strong>{{ job }}</strong></label>
                         {% endfor %}
                         {% endif %}
                     </div>
@@ -186,3 +186,17 @@
 </div>
 </br>
 {% endblock content %}
+{% block script %}
+<script>
+    {% if select_city %}
+    {% for city in select_city %}
+    document.getElementById("city_{{city}}").checked = true;
+    {% endfor %}
+    {% endif %}
+    {% if select_job %}
+    {% for job in select_job %}
+    document.getElementById("job_{{job}}").checked = true;
+    {% endfor %}
+    {% endif %}
+</script>
+{% endblock script %}
