@@ -14,7 +14,7 @@ class NcsCodeInfo(models.Model):
 
 
 class NcsJobname(models.Model):
-    job_name = models.CharField(primary_key=True, max_length=30)
+    job_name = models.CharField(max_length=30)
     ncs_code = models.ForeignKey(NcsCodeInfo, models.DO_NOTHING, db_column='NCS_code')  # Field name made lowercase.
 
     class Meta:
@@ -28,11 +28,11 @@ class Education(models.Model):
     train_title = models.CharField(max_length=100, blank=True, null=True)
     start_date = models.DateField(blank=True, null=True)
     end_date = models.DateField(blank=True, null=True)
-    train_center = models.ForeignKey('EducationCenter', models.DO_NOTHING, db_column='train_center')
     train_cost = models.IntegerField(blank=True, null=True)
     target_people = models.CharField(max_length=15, blank=True, null=True)
     quota = models.IntegerField(blank=True, null=True)
     link = models.CharField(max_length=255, blank=True, null=True)
+    center_no = models.OneToOneField('EducationCenter', models.DO_NOTHING, db_column='center_no')
 
     class Meta:
         managed = False
@@ -40,7 +40,8 @@ class Education(models.Model):
 
 
 class EducationCenter(models.Model):
-    train_center = models.CharField(primary_key=True, max_length=30)
+    center_no = models.AutoField(primary_key=True)
+    train_center = models.CharField(max_length=30)
     address = models.CharField(max_length=20)
     center_tel = models.CharField(max_length=13, blank=True, null=True)
 

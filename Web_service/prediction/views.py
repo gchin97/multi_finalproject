@@ -44,8 +44,8 @@ def emp(request):
 
     # 초기 페이지 로드
     emp_list = EmpInfo.objects.all().values('city', 'job_name', 'company', 'link', 'ncs_code').distinct()
-    education_list = Education.objects.all().values('train_title', 'start_date', 'end_date', 'train_center', 'quota', 'link').distinct()
-    center_list = EducationCenter.objects.filter(train_center__in=education_list.values_list('train_center', flat=True)).values('address', 'center_tel').distinct()
+    education_list = Education.objects.all().values('train_title', 'start_date', 'end_date', 'center_no', 'quota', 'link').distinct()
+    center_list = EducationCenter.objects.filter(center_no__in=education_list.values_list('center_no', flat=True)).values('train_center', 'address', 'center_tel').distinct()
 
 # 고유한 'city', 'company', 'link', 'job_name' 정보를 포함하는 사전의 목록
     unique_emp_list = []
@@ -64,6 +64,10 @@ def emp(request):
     paginator = Paginator(unique_emp_list, 5)
     page = request.GET.get('page', '1')
     page_obj = paginator.get_page(page)
+    
+    # use_service = UseService(user=UserInfo.objects.get(user_id=request.user.user_id), service_code=2,
+    #                                  city=city_list, job_name=job_list, use_date=timezone.now())
+    # use_service.save()
 
     context = {'emp_list': page_obj, 'city_list': city_list, 'job_list': job_list, 'education_list' : education_list, 'center_list': center_list}
     return render(request, 'prediction/emp.html', context)
