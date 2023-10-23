@@ -119,7 +119,7 @@ def search(request):
             use_service = UseService(user=UserInfo.objects.get(user_id=request.user.user_id), city=city_lists, job_name=job_names, service_code=2, use_date=timezone.now()) # city와 job_name 어떻게 넣을지?
             use_service.save()
 
-            return render(request, 'prediction/emp.html', {'city_list': city_list, 'job_list': job_list, 'education_list' : education_list, 'emp_list': page_obj , 'error_message':error_message})
+            return render(request, 'prediction/emp.html', {'city_list': city_list, 'job_list': job_list, 'education_list' : education_list, 'emp_list': page_obj , 'error_message':error_message, 'select_city':selected_cities, 'select_job':selected_jobs})
     else:
         return render(request, 'common/login.html')
     
