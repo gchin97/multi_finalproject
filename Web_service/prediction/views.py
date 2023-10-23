@@ -116,10 +116,22 @@ def search(request):
             city_lists = ','.join(selected_cities)
             job_names = ','.join(selected_jobs)
             
-            use_service = UseService(user=UserInfo.objects.get(user_id=request.user.user_id), city=city_lists, job_name=job_names, service_code=2, use_date=timezone.now()) # city와 job_name 어떻게 넣을지?
+            use_service = UseService(user=UserInfo.objects.get(user_id=request.user.user_id), city=city_lists, job_name=job_names, service_code=2, use_date=timezone.now())
             use_service.save()
+            
+            page_info = ''
+            selected_cities_info = ['city=' + i for i in selected_cities]
+            selected_jobs_info = ['job_name' + i for i in selected_jobs]
+            
+            if selected_jobs and selected_cities:
+                page_info = '&' + '&'.join(selected_cities_info) + '&'.join(selected_jobs_info)
+            elif selected_jobs:
+                page_info = '&' + '&'.join(selected_jobs_info)
+            elif selected_cities:
+                page_info = '&' + '&'.join(selected_cities_info)
+            
 
-            return render(request, 'prediction/emp.html', {'city_list': city_list, 'job_list': job_list, 'education_list' : education_list, 'emp_list': page_obj , 'error_message':error_message, 'select_city':selected_cities, 'select_job':selected_jobs})
+            return render(request, 'prediction/emp.html', {'city_list': city_list, 'job_list': job_list, 'education_list' : education_list, 'emp_list': page_obj , 'error_message':error_message, 'select_city':selected_cities, 'select_job':selected_jobs, 'page_info':page_info})
     else:
         return render(request, 'common/login.html')
     

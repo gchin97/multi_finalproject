@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load prediction_filter %}
+{% load prediction_extras %}
 {% block content %}
 
 <!-- 필터부분 -->
@@ -91,7 +92,7 @@
         <!-- 이전 페이지 -->
         {% if emp_list.has_previous %}
         <li class="page-item">
-            <a href="?page={{emp_list.previous_page_number}}" class="page-link"> < 이전</a>
+            <a href="{% my_url emp_list.previous_page_number 'page' request.GET.urlencode %}" class="page-link"> < 이전</a>
         </li>
         {% else %}
         <li class="page-item disabled">
@@ -103,11 +104,11 @@
         {% if page_number >= emp_list.number|add:-4 and page_number <= emp_list.number|add:+4 %}
         {% if page_number == emp_list.number %}
         <li class="page-item active" aria-current="page">
-            <a href="?page={{page_number}}" class="page-link">{{page_number}}</a>
+            <a href="{% my_url page_number 'page' request.GET.urlencode %}" class="page-link">{{page_number}}</a>
         </li>
         {% else %}
         <li class="page-item">
-            <a href="?page={{page_number}}" class="page-link">{{page_number}}</a>
+            <a href="{% my_url page_number 'page' request.GET.urlencode %}" class="page-link">{{page_number}}</a>
         </li>
         {% endif %}
         {% endif %}
@@ -115,7 +116,7 @@
         <!-- 다음 페이지 -->
         {% if emp_list.has_next %}
         <li class="page-item">
-            <a href="?page={{emp_list.next_page_number}}" class="page-link">다음 > </a>
+            <a href="{% my_url emp_list.next_page_number 'page' request.GET.urlencode %}" class="page-link">다음 > </a>
         </li>
         {% else %}
         <li class="page-item disabled">
