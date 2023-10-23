@@ -46,8 +46,17 @@ class NormalUserChangeForm(forms.ModelForm):
     
     class Meta:
         model = UserInfo
-        fields = ('user_id', 'gender', 'birth_date')
+        fields = ['user_id', 'gender', 'birth_date']
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        if self.instance and self.instance.birth_date:
+            self.initial['birth_date'] = self.instance.birth_date.strftime('%Y-%m-%d')
+
+        if self.instance and self.instance.gender:
+            self.initial['gender'] = self.instance.gender
+            
 # 로그인
 class LoginForm(forms.ModelForm):
     password = forms.CharField(label='Password', widget=forms.PasswordInput)
