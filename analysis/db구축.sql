@@ -14,11 +14,11 @@ CREATE TABLE `education` (
 	`train_title`	varchar(100)	NULL,
 	`start_date`	date	NULL,
 	`end_date`	date	NULL,
-	`train_center`	varchar(30)	NOT NULL,
 	`train_cost`	int	NULL,
 	`target_people`	varchar(15)	NULL,
 	`quota`	int	NULL,
 	`link`	varchar(255)	NULL,
+    `center_no` BIGINT,
     constraint `PK_EDUCATION` primary key (no)
 );
 
@@ -56,9 +56,11 @@ CREATE TABLE `NCS_jobname` (
 );
 
 CREATE TABLE `education_center` (
+    `center_no` BIGINT NOT NULL,
 	`train_center`	varchar(30)	NOT NULL,
 	`address`	varchar(20)	NULL,
-	`center_tel`	varchar(13)	NULL
+	`center_tel`	varchar(13)	NULL,
+    CONSTRAINT `PK_EDUCATION_CENTER` PRIMARY KEY (center_no)
 );
 
 CREATE TABLE `use_service` (
@@ -84,20 +86,6 @@ ALTER TABLE `NCS_code_info` ADD CONSTRAINT `PK_NCS_CODE_INFO` PRIMARY KEY (
 	`NCS_code`
 );
 
-ALTER TABLE `NCS_jobname` ADD CONSTRAINT `PK_NCS_JOBNAME` PRIMARY KEY (
-	`job_name`,
-	`NCS_code`
-);
-
-ALTER TABLE `education_center` ADD CONSTRAINT `PK_EDUCATION_CENTER` PRIMARY KEY (
-	`train_center`,
-	`address`
-);
-
-ALTER TABLE `use_service` ADD CONSTRAINT `PK_USE_SERVICE` PRIMARY KEY (
-	`user_id`
-);
-
 ALTER TABLE `education` ADD CONSTRAINT `FK_NCS_code_info_TO_education_1` FOREIGN KEY (
 	`NCS_code`
 )
@@ -106,24 +94,10 @@ REFERENCES `NCS_code_info` (
 );
 
 ALTER TABLE `education` ADD CONSTRAINT `FK_education_center_TO_education_1` FOREIGN KEY (
-	`train_center`
+	`center_no`
 )
 REFERENCES `education_center` (
-	`train_center`
-);
-
-ALTER TABLE `emp_info` ADD CONSTRAINT `FK_NCS_jobname_TO_emp_info_1` FOREIGN KEY (
-	`job_name`
-)
-REFERENCES `NCS_jobname` (
-	`job_name`
-);
-
-ALTER TABLE `emp_info` ADD CONSTRAINT `FK_NCS_jobname_TO_emp_info_2` FOREIGN KEY (
-	`NCS_code`
-)
-REFERENCES `NCS_code_info` (
-	`NCS_code`
+	`center_no`
 );
 
 ALTER TABLE `NCS_jobname` ADD CONSTRAINT `FK_NCS_code_info_TO_NCS_jobname_1` FOREIGN KEY (
@@ -133,4 +107,10 @@ REFERENCES `NCS_code_info` (
 	`NCS_code`
 );
 
-
+-- 데이터 넣은 후 코드 실행하세요!
+ALTER TABLE `emp_info` ADD CONSTRAINT `FK_NCS_jobname_TO_emp_info_1` FOREIGN KEY (
+	`NCS_code`
+)
+REFERENCES `NCS_code_info` (
+	`NCS_code`
+);
