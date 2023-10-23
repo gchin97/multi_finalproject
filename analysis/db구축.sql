@@ -66,9 +66,9 @@ CREATE TABLE `education_center` (
 CREATE TABLE `use_service` (
 	`user_id`	varchar(255)	NOT NULL,
 	`service_code`	int	NULL,
-	`city`	varchar(10)	NULL,
+	`city`	varchar(255)	NULL,
 	`industry`	varchar(30)	NULL,
-	`job_name`	varchar(10)	NULL,
+	`job_name`	varchar(255)	NULL,
 	`use_date`	date	NULL
 );
 

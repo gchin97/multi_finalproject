@@ -5,9 +5,9 @@ from django.contrib.auth.models import AbstractUser, AbstractBaseUser, UserManag
 class UseService(models.Model):
     user = models.OneToOneField('UserInfo', models.DO_NOTHING, primary_key=False)
     service_code = models.IntegerField(blank=True, null=True)
-    city = models.CharField(max_length=10, blank=True, null=True)
+    city = models.CharField(max_length=255, blank=True, null=True)
     industry = models.CharField(max_length=30, blank=True, null=True)
-    job_name = models.CharField(max_length=10, blank=True, null=True)
+    job_name = models.CharField(max_length=255, blank=True, null=True)
     use_date = models.DateField(blank=True, null=True)
 
     class Meta:
