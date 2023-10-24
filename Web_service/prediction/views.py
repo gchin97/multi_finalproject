@@ -135,3 +135,5 @@ def search(request):
     else:
         return render(request, 'common/login.html')
     
+def recent(request):
+    return render(request, "prediction/recent.html")
