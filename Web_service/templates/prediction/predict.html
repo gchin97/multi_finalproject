@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <div class="container my-3">
     <section>
       
@@ -85,23 +86,93 @@
                         <br>
                         <br>
                         <br>
-                        <h5 class="text-center" style="font-size:1.5rem;">
-                            {{city}} 지역의 2024년 {{month}}월 {{industry}} 개발 직군 일자리는 약 <strong>{{result}}명</strong> 정도로 예상됩니다.
-                        </h5>
+                        <div class="loader">
+                            <div id="loading">
+                                <p>AI 예측중</p>
+                                <div class="droplet_spinner">
+                                  <div class="droplet"></div>
+                                  <div class="droplet"></div>
+                                  <div class="droplet"></div>
+                                </div>
+                              </div>
+                        </div>
+                        <style>
+                            #loading {
+                              position: fixed;
+                              top: 40%;
+                              left: 50%;
+                              transform: translate(-50%, -50%);
+                              text-align: center;
+                            }
+                          
+                            .droplet_spinner {
+                              display: flex;
+                              justify-content: center;
+                              margin: 30px;
+                            }
+                          
+                            .droplet_spinner .droplet {
+                              width: 15px;
+                              height: 15px;
+                              margin: 0 5px;
+                              background-color: #e14242;
+                              border-radius: 50%;
+                              transform-origin: center bottom;
+                              animation: bounce 1.2s cubic-bezier(0.3, 0.01, 0.4, 1) infinite;
+                            }
+                          
+                            .droplet_spinner .droplet:nth-child(1) {
+                              animation-delay: -0.4s;
+                            }
+                          
+                            .droplet_spinner .droplet:nth-child(2) {
+                              animation-delay: -0.2s;
+                            }
+                          
+                            .droplet_spinner .droplet:nth-child(3) {
+                              animation-delay: 0s;
+                            }
+                          
+                            @keyframes bounce {
+                              0%, 100% {
+                                transform: translateY(0);
+                              }
+                              50% {
+                                transform: translateY(-20px);
+                              }
+                            }
+                          </style>
+                          <script>
+                            // 페이지가 로드되면 실행될 함수
+                            $(document).ready(function() {
+                                var loader = $("div.loader");
+                                var container = $("div.container");
+                                var form = $("form");
+
+                                // 3초 후에 container를 나타내는 함수
+                                function showPage() {
+                                    loader.css("display", "none");
+                                    container.css("display", "block");
+                                }
+
+                                // 3초 뒤에 showPage 함수를 호출
+                                setTimeout(showPage, 3000); // 3초는 3000밀리초
+
+                                // "예측하기" 버튼 클릭 시 로딩 화면을 보여주는 함수
+                                form.on("submit", function() {
+                                    loader.css("display", "block");
+                                    container.css("display", "none");
+                                });
+                            }); 
+                          </script>
+                        <div class="container" style='display:none'>
+                            <h5 class="text-center" style="font-size:1.5rem;">
+                                {{city}} 지역의 2024년 {{month}}월 {{industry}} 개발 직군 일자리는 약 <strong>{{result}}명</strong> 정도로 예상됩니다.
+                            </h5>
+                        </div>
                         {% endif %}
                 </form>
             </div>
-        </div>
-    </section>
-    <br>
-    <hr>
-    <br>
-    <section>
-        <div class="row">
-            <div class="text-center">
-                <h4><strong>지역별 채용 현황(2013~2022년 종합)</strong></h4>
-            </div>
-            <iframe src="https://public.tableau.com/views/_230926/Dashboard32?:showVizHome=no&amp;:embed=true" width="2500" height="768" frameborder="0"></iframe>
         </div>
     </section>
 </div>
