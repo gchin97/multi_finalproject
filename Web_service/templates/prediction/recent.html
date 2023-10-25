@@ -3,19 +3,48 @@
 {% block content %}
 <div class="container">
     <br>
-    <h3 class="text-center"><strong>최근 동향</strong></h3>
+    <h3 class="text-center" id = "header"><strong>최근 동향</strong></h3>
     <br>
-    <h5 class="text-center">5개 산업군의 10년간 동향을 알려드립니다.</h5>
+    <br>
+    <p class="text-center">5개 산업군의 10년간 동향을 시각화 자료로 알려드립니다.</p>
+    <ul style="width: 300px; margin-left: auto; margin-right: auto;">
+        <li><a href="#1">지역별 채용 현황(2013~2022년 종합)</a></li>
+        <li><a href="#2">산업/지역별 구인인원 규모</a></li>
+        <li><a href="#3">산업별 구인인원 추이</a></li>
+        <li><a href="#4">산업/지역별 실업급여 수급자 수</a></li>
+    </ul>
+    <br>
+    <hr>
     <br>
     <section>
         <div class="row">
-            <div class="text-left">
-                <h6><strong>1. 산업/지역별 구인인원 규모</strong></h6>
+            <div class="text-center">
+                <h5 id="1"><strong>지역별 채용 현황(2013~2022년 종합)</strong></h5>
             </div>
-            <iframe src="https://public.tableau.com/views/2_16964959682950/sheet4?:language=ko-KR&:showVizHome=no&amp;:embed=true" width="600" height="400" frameborder="0"></iframe>
+            <iframe src="https://public.tableau.com/views/_230926/Dashboard32?:showVizHome=no&amp;:embed=true" width="1250" height="768" frameborder="0"></iframe>
+        </div>
+        <br>
+        <div class="row">
+            <div class="text-left">
+                <h5 id="2"><strong>산업/지역별 구인인원 규모</strong></h5>
+            </div>
+            <iframe src="https://public.tableau.com/views/_16980436251480/sheet4?:language=ko-KR&:showVizHome=no&amp;:embed=true" width="500" height="600" frameborder="0"></iframe>
+            <br>
+            <div class="text-left" style="margin-top:30px;">
+                <h5 id="3"><strong>산업별 구인인원 추이</strong></h5>
+            </div>
+            <iframe src="https://public.tableau.com/views/2_16964959682950/sheet3?:language=ko-KR&:showVizHome=no&amp;:embed=true" width="500" height="600" frameborder="0"></iframe>
+        </div>
+        <br>
+        <div class="row">
+            <div class="text-left">
+                <h5 id="4"><strong>산업/지역별 실업급여 수급자 수</strong></h5>
+            </div>
+            <iframe src="https://public.tableau.com/views/__16981956958180/sheet9?:language=ko-KR&:showVizHome=no&amp;:embed=true" width="500" height="600" frameborder="0"></iframe>
         </div>
     </section>
-    
-    
+    <div style="position: fixed; bottom: 10px; right: 10px;">
+        <a href = "#header" style="font-size: 20px;"><strong>TOP</strong></a>
+    </div>
 </div>
 {% endblock content %}
