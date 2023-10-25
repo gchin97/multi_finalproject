@@ -27,6 +27,63 @@
             <input type="date" name="birth_date" id="birth_date" class="input"
                     value="{{form.birth_date.value|default_if_none:""}}">
             </div>
+            
+            
+            
+            <div class="group">
+                <label for="address" class="label">거주지</label>
+
+                <input name="address" id="seoul" type="radio" value="서울" class="check" {% if form.address.value == '서울' %}checked{% endif %}>
+                <label for="seoul"><span class="icon"></span>서울</label>
+
+                <input name="address" id="busan" type="radio" value="부산" class="check" {% if form.address.value == '부산' %}checked{% endif %}>
+                <label for="busan"><span class="icon"></span>부산</label>
+
+                <input name="address" id="daegu" type="radio" value="대구" class="check" {% if form.address.value == '대구' %}checked{% endif %}>
+                <label for="daegu"><span class="icon"></span>대구</label>
+
+                <input name="address" id="incheon" type="radio" value="인천" class="check" {% if form.address.value == '인천' %}checked{% endif %}>
+                <label for="incheon"><span class="icon"></span>인천</label>
+
+                <input name="address" id="gwangju" type="radio" value="광주" class="check" {% if form.address.value == '광주' %}checked{% endif %}>
+                <label for="gwangju"><span class="icon"></span>광주</label>
+
+                <input name="address" id="daejeon" type="radio" value="대전" class="check" {% if form.address.value == '대전' %}checked{% endif %}>
+                <label for="daejeon"><span class="icon"></span>대전</label>
+
+                <input name="address" id="ulsan" type="radio" value="울산" class="check" {% if form.address.value == '울산' %}checked{% endif %}>
+                <label for="ulsan"><span class="icon"></span>울산</label>
+
+                <input name="address" id="sejong" type="radio" value="세종" class="check" {% if form.address.value == '세종' %}checked{% endif %}>
+                <label for="sejong"><span class="icon"></span>세종</label>
+
+                <input name="address" id="gyunggi" type="radio" value="경기" class="check" {% if form.address.value == '경기' %}checked{% endif %}>
+                <label for="gyunggi"><span class="icon"></span>경기</label>
+
+                <input name="address" id="gangone" type="radio" value="강원" class="check" {% if form.address.value == '강원' %}checked{% endif %}>
+                <label for="gangone"><span class="icon"></span>강원</label>
+
+                <input name="address" id="chungbuk" type="radio" value="충북" class="check" {% if form.address.value == '충북' %}checked{% endif %}>
+                <label for="chungbuk"><span class="icon"></span>충북</label>
+
+                <input name="address" id="chungnam" type="radio" value="충남" class="check" {% if form.address.value == '충남' %}checked{% endif %}>
+                <label for="chungnam"><span class="icon"></span>충남</label>
+
+                <input name="address" id="jeonbuk" type="radio" value="전북" class="check" {% if form.address.value == '전북' %}checked{% endif %}>
+                <label for="jeonbuk"><span class="icon"></span>전북</label>
+
+                <input name="address" id="jeonnam" type="radio" value="전남" class="check" {% if form.address.value == '전남' %}checked{% endif %}>
+                <label for="jeonnam"><span class="icon"></span>전남</label>
+
+                <input name="address" id="gyungbuk" type="radio" value="경북" class="check" {% if form.address.value == '경북' %}checked{% endif %}>
+                <label for="gyungbuk"><span class="icon"></span>경북</label>
+
+                <input name="address" id="gyungnam" type="radio" value="경남" class="check" {% if form.address.value == '경남' %}checked{% endif %}>
+                <label for="gyungnam"><span class="icon"></span>경남</label>
+
+                <input name="address" id="jeju" type="radio" value="제주" class="check" {% if form.address.value == '제주' %}checked{% endif %}>
+                <label for="jeju"><span class="icon"></span>제주</label>
+            </div>
 
             <div class="group">
                 <label for="gender" class="label">성별</label>

@@ -46,6 +46,7 @@ class UserInfo(AbstractBaseUser, PermissionsMixin):
     user_id = models.EmailField(max_length=255, unique=True)
     gender = models.CharField(max_length=5, blank=True, null=True)
     birth_date = models.DateField(blank=True, null=True)
+    address = models.CharField(max_length=20, null=True, blank=True)
     is_admin = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     is_superuser = models.BooleanField(default=False)
@@ -59,7 +60,7 @@ class UserInfo(AbstractBaseUser, PermissionsMixin):
         db_table = 'user_info'
     
     USERNAME_FIELD = 'user_id'
-    REQUIRED_FIELDS = ['gender', 'birth_date']
+    REQUIRED_FIELDS = ['gender', 'birth_date', 'address']
 
     def __str__(self):
         return self.user_id
