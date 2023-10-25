@@ -6,16 +6,16 @@
     <br>
     <div class="text-center">
         <h3><strong>채용 공고 및 교육 추천</strong></h3>
+        <br>
     </div>
 </div>
 
 <div class="container">
     <!-- 필터부분 -->
     <div style="width: 50%; float: left;">
-        <form action="{% url 'prediction:search' %}" method="get" class="container" style="width: 100%; height:600px; float: left;">
+        <form action="{% url 'prediction:search' %}" method="get" class="container" style="width: 100%; height:500px; float: left;">
             <div class="container">
-                    <div class="col">
-                        <br>
+                    <div class="col" style="margin-top: 100px; margin-bottom: 20px;">
                         <h4 class="text-left">지역 선택</h4>
                         <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
                             {% if city_list %}
@@ -49,51 +49,53 @@
             </div>
         </form>
     </div>
-
     <!-- 태블로 임베딩 부분 -->
     <div style="width: 50%; float: right;">
-        <iframe src = "https://public.tableau.com/views/_16981343025260/sheet2?:showVizHome=no&:embed=true" width= "600" height= "600"></iframe>
+        <iframe src = "https://public.tableau.com/views/_16981343025260/sheet2?:showVizHome=no&:embed=true" width= "600" height= "501"></iframe>
     </div>
 </div>
 
 
 <!-- 채용공고 부분 -->
 <div class="container">
+    <h3>채용공고</h3> 
+</div>
+
+<div class="container">
     <table class="table">
-    <h3>채용공고</h3>
-    <thead>
-        <tr class="text-center table-dark">
-            <th>번호</th>
-            <th>지역</th>
-            <th>직업명</th>
-            <th>기업명</th>
-            <th>링크</th>
-        </tr>
-    </thead>
-    {% if emp_list %}
-    {% for emp in emp_list %}
-    <tbody>
-        <tr class="text-center">
-            <td>
-                <!-- 번호 = 전체건수 - 시작인덱스 - 현재 인덱스 + 1 -->
-                {{ forloop.counter }}
-            </td>
-            <td>
-                {{emp.city}}
-            </td>
-            <td class="text-center">
-                {{emp.job_name}}
-            </td>
-            <td class="text-center">
-                {{emp.company}}
-            </td>
-            <td>
-                <a href="{{emp.link}}" target="_blank">채용공고 확인</a>
-            </td>
-        </tr>
+        <thead>
+            <tr class="text-center table-dark">
+                <th>번호</th>
+                <th>지역</th>
+                <th>직업명</th>
+                <th>기업명</th>
+                <th>링크</th>
+            </tr>
+        </thead>
+        {% if emp_list %}
+        {% for emp in emp_list %}
+        <tbody>
+            <tr class="text-center">
+                <td>
+                    <!-- 번호 = 전체건수 - 시작인덱스 - 현재 인덱스 + 1 -->
+                    {{ forloop.counter }}
+                </td>
+                <td>
+                    {{emp.city}}
+                </td>
+                <td class="text-center">
+                    {{emp.job_name}}
+                </td>
+                <td class="text-center">
+                    {{emp.company}}
+                </td>
+                <td>
+                    <a href="{{emp.link}}" target="_blank">채용공고 확인</a>
+                </td>
+            </tr>
+        </tbody>
         {% endfor %}
         {% endif %}
-    </tbody>
     </table>
 
     <!-- 페이징처리 시작 -->
@@ -133,10 +135,10 @@
         </li>
         {% endif %}
     </ul>
-<!-- 페이징처리 끝 -->
+    <!-- 페이징처리 끝 -->
 </div>
-
 <br>
+
 <!-- 교육정보 부분 -->
 <div class="container">
     <h3>교육 정보</h3>
@@ -194,7 +196,7 @@
         </table>
     </div>
 </div>
-</br>
+<br>
 {% endblock content %}
 {% block script %}
 <script>
